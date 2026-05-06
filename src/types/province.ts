@@ -37,6 +37,8 @@ export type Province = {
   name: string;
   shortName: string;
   description: string;
+  /** Dato corto tipo “¿Sabías que…?” para la pestaña Curiosidades */
+  curiosity?: string;
   flora: string;
   fauna: string;
   foods: string;

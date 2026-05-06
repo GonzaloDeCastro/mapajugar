@@ -9,17 +9,23 @@ type Props = {
 export function ProvinceGallery({ images }: Props) {
   if (images.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-stone-300 bg-stone-50 px-4 py-6 text-sm text-stone-600 dark:border-stone-700 dark:bg-stone-900/40 dark:text-stone-400">
-        Galería en preparación. Podés reemplazar esto con fotos optimizadas (WebP/AVIF)
-        en <code className="rounded bg-stone-200 px-1 dark:bg-stone-800">public/</code>.
+      <p className="rounded-2xl border-2 border-dashed border-water/40 bg-surface px-4 py-8 text-center text-sm font-semibold text-foreground-muted">
+        Galería en preparación. Podés sumar fotos optimizadas en{" "}
+        <code className="rounded-lg bg-celeste/20 px-2 py-0.5 text-forest">
+          public/
+        </code>
+        .
       </p>
     );
   }
 
   return (
-    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {images.map((img, i) => (
-        <li key={`${img.src}-${i}`} className="overflow-hidden rounded-xl bg-stone-100 dark:bg-stone-900">
+        <li
+          key={`${img.src}-${i}`}
+          className="overflow-hidden rounded-2xl border-2 border-sky-deep/10 bg-surface-elevated shadow-[var(--shadow-card)] transition-[transform] hover:-translate-y-0.5"
+        >
           <Image
             src={img.src}
             alt={img.alt}

@@ -1,11 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 const siteUrl =
@@ -14,28 +23,28 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mapa Interactivo de Argentina",
-    template: "%s | Mapa Interactivo de Argentina",
+    default: "Mapa Jugar — Explorá Argentina",
+    template: "%s | Mapa Jugar",
   },
   description:
-    "Explorá Argentina en un mapa interactivo por provincias: naturaleza, cultura y turismo, optimizado para móviles.",
-  applicationName: "Mapa Interactivo de Argentina",
+    "Mapa interactivo para explorar Argentina: provincias, naturaleza, cultura y turismo. Pensado para chicas, chicos y aulas.",
+  applicationName: "Mapa Jugar",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "es_AR",
     url: "/",
-    siteName: "Mapa Interactivo de Argentina",
-    title: "Mapa Interactivo de Argentina",
+    siteName: "Mapa Jugar",
+    title: "Mapa Jugar — Explorá Argentina",
     description:
-      "Mapa liviano por provincias con foco en performance y experiencia mobile-first.",
+      "Descubrí el país jugando con el mapa: flora, fauna, sabores y destinos.",
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+    { media: "(prefers-color-scheme: light)", color: "#0f3d5c" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c2438" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -50,7 +59,7 @@ export default function RootLayout({
     <html lang="es-AR" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} font-sans antialiased`}
+        className={`${nunito.variable} ${fredoka.variable} font-sans antialiased`}
       >
         {children}
       </body>

@@ -27,6 +27,7 @@ function stub(
     name,
     shortName,
     description: `${name} concentra paisajes y culturas propias de ${hint}. Ideal para recorrer con tiempo, priorizando rutas escénicas y estaciones del año.`,
+    curiosity: `Tip de explorador: en ${name} destaca ${hint.toLowerCase()} — ideal para aprender con el mapa.`,
     flora: `Vegetación típica de la región: formaciones nativas, bosques y pastizales según relieve y precipitación.`,
     fauna: `Aves, pequeños mamíferos y especies acuáticas en humedales y ríos; la observación responsable respeta cerramientos y períodos de reproducción.`,
     foods: `Platos regionales de cocina casera, productos locales de estación y especialidades de ferias.`,
@@ -50,6 +51,8 @@ export const PROVINCES: Province[] = [
       "Asado, milanesas, fugazzetta, dulce de leche, quesos y vinos de la región vitivinícola bonaerense.",
     tourism:
       "Mar del Plata y la Costa Atlántica, Tandil y Sierra de la Ventana, San Antonio de Areco, Tigre y Delta, colonias agrícolas y museos rurales.",
+    curiosity:
+      "La provincia tiene miles de kilómetros de costa atlántica: un mundo de playas, dunas y reservas para descubrir.",
     gallery: [...sampleGallery("Buenos Aires")],
   },
   {
@@ -66,6 +69,8 @@ export const PROVINCES: Province[] = [
       "Choripán, empanadas, cabrito y alfajores artesanales; cervezas de la región y quesos serranos.",
     tourism:
       "Villa Carlos Paz, La Cumbrecita, Los Gigantes, La Falda, Mina Clavero y el Camino de las Altas Cumbres.",
+    curiosity:
+      "Las Sierras de Córdoba son un clásico del centro del país: ríos, pueblos y miradores en cada curva.",
     gallery: [...sampleGallery("Córdoba")],
   },
   {
@@ -82,6 +87,8 @@ export const PROVINCES: Province[] = [
       "Humitas, tamales, quinoa en guisos, chicha y dulces regionales de caña.",
     tourism:
       "Purmamarca y el Cerro de los Siete Colores, Tilcara, Humahuaca, Salinas Grandes y el Parque Nacional Calilegua.",
+    curiosity:
+      "En pocos kilómetros podés pasar de la Puna alta a las Yungas: un cambio de paisaje dramático.",
     gallery: [...sampleGallery("Jujuy")],
   },
   stub("catamarca", "Catamarca", "CT", "los Valles Calchaquíes y la Puna"),
@@ -119,6 +126,8 @@ export const PROVINCES: Province[] = [
       "Pizza, helado, cafés notables, parrilla porteña y pastelería tradicional.",
     tourism:
       "Caminito y La Boca, San Telmo, Recoleta, Puerto Madero, Teatro Colón y Costanera Sur.",
+    curiosity:
+      "La ciudad mezcla parques enormes, historia y arte callejero: perfecta para recorrer con curiosidad.",
     gallery: [...sampleGallery("CABA")],
   },
 ];

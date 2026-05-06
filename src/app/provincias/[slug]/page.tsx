@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: province.description.slice(0, 155),
     alternates: { canonical: url },
     openGraph: {
-      title: `${province.name} — Mapa Interactivo de Argentina`,
+      title: `${province.name} — Mapa Jugar`,
       description: province.description.slice(0, 200),
       url,
       locale: "es_AR",
@@ -42,20 +42,23 @@ export default async function ProvincePage({ params }: Props) {
   if (!province) notFound();
 
   return (
-    <div className="min-h-dvh bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-dvh text-foreground">
       <SiteHeader />
-      <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
-        <nav className="mb-8 text-sm" aria-label="Migas de pan">
-          <ol className="flex flex-wrap gap-2 text-stone-600 dark:text-stone-400">
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-10">
+        <nav className="mb-8" aria-label="Migas de pan">
+          <ol className="flex flex-wrap items-center gap-2 text-sm font-bold sm:text-base">
             <li>
-              <Link href="/" className="underline-offset-4 hover:underline">
+              <Link
+                href="/"
+                className="rounded-full bg-water/15 px-3 py-1.5 text-water underline-offset-4 transition hover:bg-water/25 hover:underline"
+              >
                 Inicio
               </Link>
             </li>
-            <li aria-hidden="true">/</li>
-            <li className="font-medium text-stone-800 dark:text-stone-200">
-              {province.name}
+            <li aria-hidden="true" className="text-foreground-muted">
+              /
             </li>
+            <li className="font-display text-sky-deep">{province.name}</li>
           </ol>
         </nav>
         <ProvinceSections province={province} />

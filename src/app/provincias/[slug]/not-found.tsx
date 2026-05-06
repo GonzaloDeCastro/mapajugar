@@ -4,20 +4,23 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 
 export default function ProvinceNotFound() {
   return (
-    <div className="min-h-dvh bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-dvh text-foreground">
       <SiteHeader />
       <main className="mx-auto max-w-lg px-4 py-16 text-center sm:px-6">
-        <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-50">
+        <p className="text-4xl" aria-hidden>
+          🗺️
+        </p>
+        <h1 className="mt-4 font-display text-2xl font-bold text-sky-deep">
           Provincia no encontrada
         </h1>
-        <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+        <p className="mt-2 text-base font-semibold text-foreground-muted">
           Verificá la URL o volvé al mapa para elegir otra jurisdicción.
         </p>
         <Link
-          href="/"
-          className="mt-6 inline-flex rounded-full bg-emerald-800 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+          href="/#mapa-explorar"
+          className="mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-terracotta px-6 text-base font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
         >
-          Ir al inicio
+          Ir al mapa
         </Link>
       </main>
     </div>

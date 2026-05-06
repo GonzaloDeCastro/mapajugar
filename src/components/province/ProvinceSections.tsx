@@ -1,71 +1,41 @@
-import type { ReactNode } from "react";
-
 import type { Province } from "@/types/province";
 
+import { ProvinceExploreTabs } from "./ProvinceExploreTabs";
 import { ProvinceGallery } from "./ProvinceGallery";
-
-const Section = ({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: ReactNode;
-}) => (
-  <section className="space-y-2" aria-labelledby={id}>
-    <h2
-      id={id}
-      className="text-base font-semibold text-emerald-950 dark:text-emerald-50"
-    >
-      {title}
-    </h2>
-    <div className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-      {children}
-    </div>
-  </section>
-);
 
 export function ProvinceSections({ province }: { province: Province }) {
   const p = (s: string) => `${province.slug}-${s}`;
 
   return (
     <article className="space-y-8">
-      <header className="space-y-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-emerald-800/80 dark:text-emerald-200/80">
+      <header className="overflow-hidden rounded-3xl border-2 border-celeste/40 bg-gradient-to-br from-surface-elevated via-background to-background-warm p-5 shadow-[var(--shadow-elevated)] sm:p-8">
+        <p className="inline-flex rounded-full bg-pampa/25 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-forest">
           {province.shortName}
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50 sm:text-3xl">
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-sky-deep sm:text-4xl">
           {province.name}
         </h1>
-        <p className="max-w-prose text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+        <p className="mt-3 max-w-prose text-base font-semibold leading-relaxed text-foreground-muted sm:text-lg">
           {province.description}
         </p>
       </header>
 
-      <div className="grid gap-8">
-        <Section id={p("flora")} title="Flora">
-          {province.flora}
-        </Section>
-        <Section id={p("fauna")} title="Fauna">
-          {province.fauna}
-        </Section>
-        <Section id={p("foods")} title="Comidas típicas">
-          {province.foods}
-        </Section>
-        <Section id={p("tourism")} title="Turismo">
-          {province.tourism}
-        </Section>
-        <section className="space-y-3" aria-labelledby={p("gallery")}>
-          <h2
-            id={p("gallery")}
-            className="text-base font-semibold text-emerald-950 dark:text-emerald-50"
-          >
-            Galería
-          </h2>
-          <ProvinceGallery images={province.gallery} />
-        </section>
-      </div>
+      <section aria-labelledby={p("explore-heading")}>
+        <h2 id={p("explore-heading")} className="sr-only">
+          Explorar contenido
+        </h2>
+        <ProvinceExploreTabs province={province} />
+      </section>
+
+      <section className="space-y-3" aria-labelledby={p("gallery")}>
+        <h2
+          id={p("gallery")}
+          className="font-display text-xl font-bold text-sky-deep sm:text-2xl"
+        >
+          Galería
+        </h2>
+        <ProvinceGallery images={province.gallery} />
+      </section>
     </article>
   );
 }
