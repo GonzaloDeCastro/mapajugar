@@ -56,7 +56,7 @@ export function ProvinceExploreTabs({ province }: Props) {
               className={`flex min-h-12 shrink-0 items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-extrabold transition-[background-color,border-color,transform] sm:text-base ${
                 selected
                   ? "border-water bg-water text-white shadow-[var(--shadow-card)]"
-                  : "border-sky-deep/15 bg-surface-elevated text-sky-deep hover:border-celeste/50"
+                  : "border-heading/20 bg-surface-elevated text-heading hover:border-celeste/50"
               }`}
             >
               <span aria-hidden>{tab.emoji}</span>

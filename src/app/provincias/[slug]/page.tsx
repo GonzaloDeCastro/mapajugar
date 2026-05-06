@@ -58,7 +58,7 @@ export default async function ProvincePage({ params }: Props) {
             <li aria-hidden="true" className="text-foreground-muted">
               /
             </li>
-            <li className="font-display text-sky-deep">{province.name}</li>
+            <li className="font-display text-heading">{province.name}</li>
           </ol>
         </nav>
         <ProvinceSections province={province} />

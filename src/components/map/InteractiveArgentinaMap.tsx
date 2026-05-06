@@ -28,6 +28,9 @@ const provincesOnMainland = provinces.filter(
 const malvinasProvince = getProvinceBySlug(MALVINAS_SLUG);
 
 const MAP_STROKE = "var(--map-stroke)";
+const MAP_STROKE_HOVER = "rgba(255,255,255,0.98)";
+const STROKE_WIDTH_BASE = 0.45;
+const STROKE_WIDTH_HOVER = 1.45;
 
 type Props = {
   className?: string;
@@ -44,6 +47,8 @@ export function InteractiveArgentinaMap({
   const labelId = useId();
   const [pressed, setPressed] = useState<ProvinceSlug | null>(null);
   const [activeProvince, setActiveProvince] = useState<ProvinceSlug | null>(null);
+  /** Solo puntero fino: posición del tooltip junto al cursor */
+  const [tipPos, setTipPos] = useState<{ x: number; y: number } | null>(null);
   const activeLabel = activeProvince
     ? getProvinceBySlug(activeProvince)?.name ?? null
     : null;
@@ -68,10 +73,10 @@ export function InteractiveArgentinaMap({
       <div
         id={labelId}
         aria-live="polite"
-        className="flex shrink-0 flex-col justify-center rounded-2xl border border-sky-deep/10 bg-surface px-3 py-3 shadow-[var(--shadow-card)] sm:w-[11.5rem] sm:border-r sm:border-b-0 sm:rounded-r-none sm:rounded-l-2xl sm:px-4 sm:py-5"
+        className="flex shrink-0 flex-col justify-center rounded-2xl border border-heading/15 bg-surface px-3 py-3 shadow-[var(--shadow-card)] sm:w-[11.5rem] sm:border-r sm:border-b-0 sm:rounded-r-none sm:rounded-l-2xl sm:px-4 sm:py-5"
       >
         <p
-          className={`text-pretty text-center text-[15px] leading-snug sm:text-left sm:text-base ${activeLabel ? "font-display text-xl font-bold tracking-tight text-sky-deep sm:text-2xl" : "font-semibold text-foreground-muted"}`}
+          className={`text-pretty text-center text-[15px] leading-snug sm:text-left sm:text-base ${activeLabel ? "font-display text-xl font-bold tracking-tight text-heading sm:text-2xl" : "font-semibold text-foreground-muted"}`}
         >
           {activeLabel ? (
             activeLabel
@@ -89,6 +94,10 @@ export function InteractiveArgentinaMap({
       </div>
       <div
         className="relative min-h-0 min-w-0 flex-1 touch-manipulation rounded-2xl sm:rounded-l-none sm:rounded-r-2xl"
+        onPointerMove={(e) => {
+          if (e.pointerType !== "mouse") return;
+          setTipPos({ x: e.clientX + 14, y: e.clientY + 14 });
+        }}
         onPointerLeave={(e) => {
           const next = e.relatedTarget;
           if (
@@ -97,6 +106,7 @@ export function InteractiveArgentinaMap({
             !e.currentTarget.contains(next)
           ) {
             setActiveProvince(null);
+            setTipPos(null);
           }
         }}
       >
@@ -117,16 +127,28 @@ export function InteractiveArgentinaMap({
                 : activeProvince === p.slug
                   ? colors.hover
                   : colors.base;
+            const isOutline =
+              activeProvince === p.slug || pressed === p.slug;
             return (
               <path
                 key={p.slug}
                 d={d}
                 fill={fill}
-                stroke={MAP_STROKE}
-                strokeWidth={0.45}
-                className="cursor-pointer transition-[fill,stroke-width] duration-200 ease-out focus:outline-none focus-visible:stroke-[0.65]"
+                stroke={isOutline ? MAP_STROKE_HOVER : MAP_STROKE}
+                strokeWidth={isOutline ? STROKE_WIDTH_HOVER : STROKE_WIDTH_BASE}
+                className="cursor-pointer transition-[fill,stroke,stroke-width] duration-200 ease-out focus:outline-none"
                 tabIndex={0}
-                onPointerEnter={() => setActiveProvince(p.slug)}
+                onPointerEnter={(e) => {
+                  setActiveProvince(p.slug);
+                  if (e.pointerType === "mouse") {
+                    setTipPos({
+                      x: e.clientX + 14,
+                      y: e.clientY + 14,
+                    });
+                  } else {
+                    setTipPos(null);
+                  }
+                }}
                 onPointerLeave={() => setPressed(null)}
                 onFocus={() => setActiveProvince(p.slug)}
                 onBlur={() => setActiveProvince(null)}
@@ -147,9 +169,23 @@ export function InteractiveArgentinaMap({
           })}
         </svg>
 
+        {activeLabel && tipPos ? (
+          <div
+            role="tooltip"
+            className="pointer-events-none fixed z-[999] hidden max-w-[min(88vw,18rem)] rounded-xl border-2 border-white/50 bg-sky-deep px-3 py-2 text-center font-display text-sm font-extrabold leading-snug text-white shadow-[var(--shadow-elevated)] [@media(hover:hover)_and_(pointer:fine)]:!block"
+            style={{
+              left: tipPos.x,
+              top: tipPos.y,
+              transform: "translate(0.5rem, 0.5rem)",
+            }}
+          >
+            {activeLabel}
+          </div>
+        ) : null}
+
         {malvinasProvince ? (
           <div className="pointer-events-auto absolute bottom-[11%] right-[36%] z-10 w-[min(12vw,4.25rem)] max-w-[4.75rem] min-w-[3rem] sm:bottom-[13%] sm:right-[38%] sm:w-[min(9.5%,4.75rem)] sm:max-w-[5rem]">
-            <p className="mb-px text-center text-[0.5rem] font-bold leading-tight text-sky-deep sm:text-[0.55rem]">
+            <p className="mb-px text-center text-[0.5rem] font-bold leading-tight text-heading sm:text-[0.55rem]">
               Islas Malvinas
             </p>
             <svg
@@ -164,11 +200,29 @@ export function InteractiveArgentinaMap({
                 <path
                   d={MALVINAS_PATH_D}
                   fill={malvinasFill}
-                  stroke={MAP_STROKE}
-                  strokeWidth={0.45}
-                  className="cursor-pointer transition-[fill,stroke-width] duration-200 ease-out focus:outline-none focus-visible:stroke-[0.65]"
+                  stroke={
+                    activeProvince === MALVINAS_SLUG || pressed === MALVINAS_SLUG
+                      ? MAP_STROKE_HOVER
+                      : MAP_STROKE
+                  }
+                  strokeWidth={
+                    activeProvince === MALVINAS_SLUG || pressed === MALVINAS_SLUG
+                      ? STROKE_WIDTH_HOVER
+                      : STROKE_WIDTH_BASE
+                  }
+                  className="cursor-pointer transition-[fill,stroke,stroke-width] duration-200 ease-out focus:outline-none"
                   tabIndex={0}
-                  onPointerEnter={() => setActiveProvince(MALVINAS_SLUG)}
+                  onPointerEnter={(e) => {
+                    setActiveProvince(MALVINAS_SLUG);
+                    if (e.pointerType === "mouse") {
+                      setTipPos({
+                        x: e.clientX + 14,
+                        y: e.clientY + 14,
+                      });
+                    } else {
+                      setTipPos(null);
+                    }
+                  }}
                   onPointerLeave={() => setPressed(null)}
                   onFocus={() => setActiveProvince(MALVINAS_SLUG)}
                   onBlur={() => setActiveProvince(null)}

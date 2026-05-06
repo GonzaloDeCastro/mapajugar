@@ -11,6 +11,9 @@
 
   /* Marca / acentos */
   --sky-deep: #0f3d5c;
+  /* Títulos y textos que antes usaban sky-deep: más claros y legibles */
+  --heading-text: #156f94;
+  --text-on-sun: #0a3048;
   --water: #1e88e5;
   --pampa: #7cb342;
   --forest: #2e7d57;
@@ -35,6 +38,8 @@
     --background-warm: #132f45;
     --foreground: #f8fafc;
     --foreground-muted: #94b8cc;
+    --heading-text: #7dd3fc;
+    --text-on-sun: #0c2438;
     --surface: rgba(19, 47, 69, 0.85);
     --surface-elevated: #153a52;
     --earth: #1a3344;
@@ -52,6 +57,8 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-sky-deep: var(--sky-deep);
+  --color-heading: var(--heading-text);
+  --color-sun-ink: var(--text-on-sun);
   --color-water: var(--water);
   --color-pampa: var(--pampa);
   --color-forest: var(--forest);

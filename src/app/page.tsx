@@ -43,7 +43,7 @@ export default function HomePage() {
           <div className="relative mt-6 flex flex-wrap gap-3">
             <Link
               href="#mapa-explorar"
-              className="inline-flex min-h-14 items-center justify-center rounded-full bg-sun px-6 text-base font-extrabold text-sky-deep shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
+              className="inline-flex min-h-14 items-center justify-center rounded-full bg-sun px-6 text-base font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
             >
               ¡Ir al mapa!
             </Link>
@@ -67,7 +67,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-end justify-between gap-2">
             <h2
               id="mapa-explorar-title"
-              className="font-display text-xl font-bold text-sky-deep sm:text-2xl"
+              className="font-display text-xl font-bold text-heading sm:text-2xl"
             >
               Mapa por provincias
             </h2>
@@ -109,7 +109,7 @@ export default function HomePage() {
               <p className="text-2xl" aria-hidden>
                 {card.emoji}
               </p>
-              <h3 className="mt-2 font-display text-lg font-bold text-sky-deep">
+              <h3 className="mt-2 font-display text-lg font-bold text-heading">
                 {card.title}
               </h3>
               <p className="mt-1 text-sm font-semibold text-foreground-muted">

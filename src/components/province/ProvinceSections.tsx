@@ -12,7 +12,7 @@ export function ProvinceSections({ province }: { province: Province }) {
         <p className="inline-flex rounded-full bg-pampa/25 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-forest">
           {province.shortName}
         </p>
-        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-sky-deep sm:text-4xl">
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-heading sm:text-4xl">
           {province.name}
         </h1>
         <p className="mt-3 max-w-prose text-base font-semibold leading-relaxed text-foreground-muted sm:text-lg">
@@ -30,7 +30,7 @@ export function ProvinceSections({ province }: { province: Province }) {
       <section className="space-y-3" aria-labelledby={p("gallery")}>
         <h2
           id={p("gallery")}
-          className="font-display text-xl font-bold text-sky-deep sm:text-2xl"
+          className="font-display text-xl font-bold text-heading sm:text-2xl"
         >
           Galería
         </h2>

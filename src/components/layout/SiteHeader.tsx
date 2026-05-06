@@ -36,7 +36,7 @@ export function SiteHeader() {
           ))}
           <Link
             href="/#mapa-explorar"
-            className="ml-1 min-h-12 rounded-full bg-sun px-5 py-2.5 text-center text-sm font-extrabold text-sky-deep shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
+            className="ml-1 min-h-12 rounded-full bg-sun px-5 py-2.5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
           >
             ¡Explorar!
           </Link>
@@ -93,7 +93,7 @@ export function SiteHeader() {
             <li>
               <Link
                 href="/#mapa-explorar"
-                className="flex min-h-12 items-center justify-center rounded-2xl bg-sun px-4 text-base font-extrabold text-sky-deep"
+                className="flex min-h-12 items-center justify-center rounded-2xl bg-sun px-4 text-base font-extrabold text-sun-ink"
                 onClick={() => setOpen(false)}
               >
                 ¡Explorar el mapa!

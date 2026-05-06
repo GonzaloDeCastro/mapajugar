@@ -10,7 +10,7 @@ export default function ProvinceNotFound() {
         <p className="text-4xl" aria-hidden>
           🗺️
         </p>
-        <h1 className="mt-4 font-display text-2xl font-bold text-sky-deep">
+        <h1 className="mt-4 font-display text-2xl font-bold text-heading">
           Provincia no encontrada
         </h1>
         <p className="mt-2 text-base font-semibold text-foreground-muted">

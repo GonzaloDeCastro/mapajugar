@@ -24,7 +24,7 @@ export function ProvinceGallery({ images }: Props) {
       {images.map((img, i) => (
         <li
           key={`${img.src}-${i}`}
-          className="overflow-hidden rounded-2xl border-2 border-sky-deep/10 bg-surface-elevated shadow-[var(--shadow-card)] transition-[transform] hover:-translate-y-0.5"
+          className="overflow-hidden rounded-2xl border-2 border-heading/15 bg-surface-elevated shadow-[var(--shadow-card)] transition-[transform] hover:-translate-y-0.5"
         >
           <Image
             src={img.src}

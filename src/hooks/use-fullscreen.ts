@@ -8,6 +8,14 @@ import { type RefObject, useCallback, useEffect, useState } from "react";
  */
 export function useFullscreen(containerRef: RefObject<HTMLElement | null>) {
   const [active, setActive] = useState(false);
+  /** false en SSR y en el 1er render del cliente → evita hydration mismatch */
+  const [supported, setSupported] = useState(false);
+
+  useEffect(() => {
+    setSupported(
+      typeof document.documentElement.requestFullscreen === "function",
+    );
+  }, []);
 
   useEffect(() => {
     const onChange = () => {
@@ -30,10 +38,6 @@ export function useFullscreen(containerRef: RefObject<HTMLElement | null>) {
       /* noop: permisos / iOS */
     }
   }, [containerRef]);
-
-  const supported =
-    typeof document !== "undefined" &&
-    typeof document.documentElement.requestFullscreen === "function";
 
   return { active, toggle, supported };
 }
