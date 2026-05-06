@@ -17,8 +17,9 @@ const fredoka = Fredoka({
   display: "swap",
 });
 
-const siteUrl =
+const siteUrlRaw =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = `${siteUrlRaw.replace(/\/$/, "")}/`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

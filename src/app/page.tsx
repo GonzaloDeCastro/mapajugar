@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { InteractiveArgentinaMap } from "@/components/map/InteractiveArgentinaMap";
+import { MapExplorerFrame } from "@/components/map/MapExplorerFrame";
 
 export const metadata: Metadata = {
   title: "Inicio",
@@ -47,6 +47,12 @@ export default function HomePage() {
             >
               ¡Ir al mapa!
             </Link>
+            <Link
+              href="/mapa"
+              className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-white/80 bg-white/10 px-6 text-base font-extrabold text-white backdrop-blur-sm transition-[filter,transform] hover:bg-white/20 active:scale-[0.98]"
+            >
+              Mapa en pantalla grande
+            </Link>
             <p className="flex min-h-14 items-center text-sm font-semibold text-white/80">
               Tip: en el celular, usá el dedo para elegir.
             </p>
@@ -69,9 +75,7 @@ export default function HomePage() {
               Modo exploración
             </span>
           </div>
-          <div className="overflow-hidden rounded-3xl border-2 border-celeste/35 bg-surface p-2 shadow-[var(--shadow-elevated)] sm:p-3">
-            <InteractiveArgentinaMap className="min-h-[min(68vh,540px)] sm:min-h-[min(72vh,620px)]" />
-          </div>
+          <MapExplorerFrame variant="home" />
         </section>
 
         <section

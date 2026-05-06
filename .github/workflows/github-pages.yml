@@ -1,0 +1,53 @@
+# Publica en la rama gh-pages. En el repo: Settings → Pages → Branch gh-pages / / (root).
+#
+# Sitio de proyecto: https://usuario.github.io/nombre-repo/  → BASE_PATH = nombre-repo
+# Sitio de usuario: repo exactamente usuario.github.io       → sin BASE_PATH
+
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Configurar URL y base path (Pages)
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [ "$REPO" = "$OWNER.github.io" ]; then
+            echo "BASE_PATH=" >> "$GITHUB_ENV"
+            echo "NEXT_PUBLIC_SITE_URL=https://${OWNER}.github.io/" >> "$GITHUB_ENV"
+          else
+            echo "BASE_PATH=$REPO" >> "$GITHUB_ENV"
+            echo "NEXT_PUBLIC_SITE_URL=https://${OWNER}.github.io/${REPO}/" >> "$GITHUB_ENV"
+          fi
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages

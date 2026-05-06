@@ -6,6 +6,7 @@ import { useState } from "react";
 const NAV_LINKS = [
   { href: "/", label: "Inicio" },
   { href: "/#mapa-explorar", label: "Mapa" },
+  { href: "/mapa", label: "Mapa grande" },
 ] as const;
 
 export function SiteHeader() {
