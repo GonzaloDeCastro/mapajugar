@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://GonzaloDeCastro.github.io/mapajugar/sitemap.xml
