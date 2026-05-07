@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { ProvinceSections } from "@/components/province/ProvinceSections";
+import { ProvinceSpotlightMap } from "@/components/province/ProvinceSpotlightMap";
 import { getAllProvinceSlugs } from "@/data/provinces";
 import {
   fetchProvinceBySlug,
@@ -50,7 +51,7 @@ export default async function ProvincePage({ params }: Props) {
   return (
     <div className="min-h-dvh text-foreground">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-10">
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10">
         <nav className="mb-8" aria-label="Migas de pan">
           <ol className="flex flex-wrap items-center gap-2 text-sm font-bold sm:text-base">
             <li>
@@ -67,7 +68,10 @@ export default async function ProvincePage({ params }: Props) {
             <li className="font-display text-heading">{province.name}</li>
           </ol>
         </nav>
-        <ProvinceSections province={province} localContent={localContent} />
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,40%)] lg:items-start">
+          <ProvinceSections province={province} localContent={localContent} />
+          <ProvinceSpotlightMap slug={province.slug} name={province.name} />
+        </div>
       </main>
     </div>
   );
