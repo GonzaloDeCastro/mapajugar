@@ -1,0 +1,18 @@
+{
+  "name": "Misiones",
+  "slug": "misiones",
+  "animals": [
+    {
+      "name": "Mono carayá",
+      "image": "/images/animals/mono-caraya-misiones.webp",
+      "description": "Primate nativo de selvas y bosques subtropicales del noreste."
+    },
+    {
+      "name": "Yaguareté",
+      "image": "/images/animals/yaguarete.webp",
+      "description": "Felino más grande de América y especie clave de la selva misionera."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

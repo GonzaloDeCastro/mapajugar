@@ -1,0 +1,13 @@
+{
+  "name": "Buenos Aires",
+  "slug": "buenos-aires",
+  "animals": [
+    {
+      "name": "Hornero",
+      "image": "/images/animals/hornero-buenos-aires.webp",
+      "description": "Ave emblemática de Argentina, frecuente en áreas urbanas y rurales."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

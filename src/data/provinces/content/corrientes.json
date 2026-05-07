@@ -1,0 +1,13 @@
+{
+  "name": "Corrientes",
+  "slug": "corrientes",
+  "animals": [
+    {
+      "name": "Carpincho",
+      "image": "/images/animals/carpincho-entre-rios.webp",
+      "description": "Roedor semiacuático muy característico del litoral."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

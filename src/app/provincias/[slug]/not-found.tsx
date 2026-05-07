@@ -17,7 +17,7 @@ export default function ProvinceNotFound() {
           Verificá la URL o volvé al mapa para elegir otra jurisdicción.
         </p>
         <Link
-          href="/#mapa-explorar"
+          href="/mapa"
           className="mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-terracotta px-6 text-base font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
         >
           Ir al mapa

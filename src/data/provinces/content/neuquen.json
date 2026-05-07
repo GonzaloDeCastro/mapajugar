@@ -1,0 +1,13 @@
+{
+  "name": "Neuquén",
+  "slug": "neuquen",
+  "animals": [
+    {
+      "name": "Zorro gris patagónico",
+      "image": "/images/animals/Zorro-gris-neuquen.webp",
+      "description": "Mamífero adaptable de estepa y zonas de precordillera."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

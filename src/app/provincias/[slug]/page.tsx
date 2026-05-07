@@ -5,7 +5,10 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { ProvinceSections } from "@/components/province/ProvinceSections";
 import { getAllProvinceSlugs } from "@/data/provinces";
-import { fetchProvinceBySlug } from "@/services/province-service";
+import {
+  fetchProvinceBySlug,
+  fetchProvinceLocalContentBySlug,
+} from "@/services/province-service";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -38,8 +41,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProvincePage({ params }: Props) {
   const { slug } = await params;
-  const province = await fetchProvinceBySlug(slug);
-  if (!province) notFound();
+  const [province, localContent] = await Promise.all([
+    fetchProvinceBySlug(slug),
+    fetchProvinceLocalContentBySlug(slug),
+  ]);
+  if (!province || !localContent) notFound();
 
   return (
     <div className="min-h-dvh text-foreground">
@@ -49,10 +55,10 @@ export default async function ProvincePage({ params }: Props) {
           <ol className="flex flex-wrap items-center gap-2 text-sm font-bold sm:text-base">
             <li>
               <Link
-                href="/"
+                href="/mapa"
                 className="rounded-full bg-water/15 px-3 py-1.5 text-water underline-offset-4 transition hover:bg-water/25 hover:underline"
               >
-                Inicio
+                Mapa
               </Link>
             </li>
             <li aria-hidden="true" className="text-foreground-muted">
@@ -61,7 +67,7 @@ export default async function ProvincePage({ params }: Props) {
             <li className="font-display text-heading">{province.name}</li>
           </ol>
         </nav>
-        <ProvinceSections province={province} />
+        <ProvinceSections province={province} localContent={localContent} />
       </main>
     </div>
   );

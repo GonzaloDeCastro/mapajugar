@@ -2,7 +2,8 @@
 
 import { useId, useState } from "react";
 
-import type { Province } from "@/types/province";
+import type { Province, ProvinceLocalContent } from "@/types/province";
+import { ProvinceTopicGrid } from "./ProvinceTopicGrid";
 
 type TabId = "flora" | "fauna" | "foods" | "tourism" | "curiosity";
 
@@ -16,9 +17,10 @@ const TABS: { id: TabId; label: string; emoji: string }[] = [
 
 type Props = {
   province: Province;
+  localContent: ProvinceLocalContent;
 };
 
-export function ProvinceExploreTabs({ province }: Props) {
+export function ProvinceExploreTabs({ province, localContent }: Props) {
   const baseId = useId();
   const [active, setActive] = useState<TabId>("flora");
 
@@ -26,10 +28,7 @@ export function ProvinceExploreTabs({ province }: Props) {
     province.curiosity ??
     `¿Sabías que ${province.name} es parte del mapa vivo de Argentina? Seguí explorando para conocer más.`;
 
-  const content: Record<TabId, string> = {
-    flora: province.flora,
-    fauna: province.fauna,
-    foods: province.foods,
+  const textContent: Record<Extract<TabId, "tourism" | "curiosity">, string> = {
     tourism: province.tourism,
     curiosity: curiosityText,
   };
@@ -66,20 +65,44 @@ export function ProvinceExploreTabs({ province }: Props) {
         })}
       </div>
 
-      {TABS.map((tab) => (
-        <div
-          key={tab.id}
-          id={`${baseId}-panel-${tab.id}`}
-          role="tabpanel"
-          aria-labelledby={`${baseId}-${tab.id}`}
-          hidden={active !== tab.id}
-          className="rounded-2xl border-2 border-sun/35 bg-background-warm/80 p-4 shadow-[var(--shadow-card)] sm:p-5"
-        >
-          <p className="text-base font-semibold leading-relaxed text-foreground sm:text-[17px]">
-            {content[tab.id]}
-          </p>
-        </div>
-      ))}
+      {TABS.map((tab) => {
+        const isDataTab =
+          tab.id === "fauna" || tab.id === "flora" || tab.id === "foods";
+        const textTabId = tab.id as "tourism" | "curiosity";
+        return (
+          <div
+            key={tab.id}
+            id={`${baseId}-panel-${tab.id}`}
+            role="tabpanel"
+            aria-labelledby={`${baseId}-${tab.id}`}
+            hidden={active !== tab.id}
+            className="rounded-2xl border-2 border-sun/35 bg-background-warm/80 p-4 shadow-[var(--shadow-card)] sm:p-5"
+          >
+            {isDataTab ? (
+              <ProvinceTopicGrid
+                topicLabel={
+                  tab.id === "fauna"
+                    ? "fauna"
+                    : tab.id === "flora"
+                      ? "flora"
+                      : "comidas"
+                }
+                items={
+                  tab.id === "fauna"
+                    ? localContent.animals
+                    : tab.id === "flora"
+                      ? localContent.plants
+                      : localContent.foods
+                }
+              />
+            ) : (
+              <p className="text-base font-semibold leading-relaxed text-foreground sm:text-[17px]">
+                {textContent[textTabId]}
+              </p>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

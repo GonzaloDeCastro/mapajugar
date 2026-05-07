@@ -1,0 +1,13 @@
+{
+  "name": "Mendoza",
+  "slug": "mendoza",
+  "animals": [
+    {
+      "name": "Cóndor andino",
+      "image": "/images/animals/condor-andino-mendoza.webp",
+      "description": "Ave de gran envergadura presente en áreas de alta montaña."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

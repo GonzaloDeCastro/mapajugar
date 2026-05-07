@@ -1,0 +1,13 @@
+{
+  "name": "Jujuy",
+  "slug": "jujuy",
+  "animals": [
+    {
+      "name": "Llama",
+      "image": "/images/animals/llama-jujuy.webp",
+      "description": "Camélido andino asociado a la Puna y a la cultura local."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

@@ -32,6 +32,20 @@ export type ProvinceImage = {
   height: number;
 };
 
+export type ProvinceContentItem = {
+  name: string;
+  image: string;
+  description: string;
+};
+
+export type ProvinceLocalContent = {
+  name: string;
+  slug: ProvinceSlug;
+  animals: ProvinceContentItem[];
+  plants: ProvinceContentItem[];
+  foods: ProvinceContentItem[];
+};
+
 export type Province = {
   slug: ProvinceSlug;
   name: string;

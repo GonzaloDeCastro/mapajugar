@@ -4,9 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { href: "/", label: "Inicio" },
-  { href: "/#mapa-explorar", label: "Mapa" },
-  { href: "/mapa", label: "Mapa grande" },
+  { href: "/mapa", label: "Mapa" },
 ] as const;
 
 export function SiteHeader() {
@@ -16,7 +14,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-[100] border-b border-white/15 bg-sky-deep text-white shadow-[var(--shadow-card)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <Link
-          href="/"
+          href="/mapa"
           className="font-display text-lg font-bold tracking-tight text-white sm:text-xl"
         >
           Mapa Jugar
@@ -35,10 +33,10 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link
-            href="/#mapa-explorar"
+            href="/mapa"
             className="ml-1 min-h-12 rounded-full bg-sun px-5 py-2.5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
           >
-            ¡Explorar!
+            Mapa
           </Link>
         </nav>
         <button
@@ -92,11 +90,11 @@ export function SiteHeader() {
             ))}
             <li>
               <Link
-                href="/#mapa-explorar"
+                href="/mapa"
                 className="flex min-h-12 items-center justify-center rounded-2xl bg-sun px-4 text-base font-extrabold text-sun-ink"
                 onClick={() => setOpen(false)}
               >
-                ¡Explorar el mapa!
+                Mapa
               </Link>
             </li>
           </ul>

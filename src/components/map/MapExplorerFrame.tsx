@@ -26,21 +26,14 @@ export function MapExplorerFrame({
     <div
       className={`flex flex-wrap items-center gap-2 ${variant === "fullPage" ? "justify-between" : ""}`}
     >
-      {variant === "fullPage" ? (
-        <Link
-          href="/"
-          className="inline-flex min-h-12 items-center gap-2 rounded-full bg-white/15 px-4 text-sm font-extrabold text-white transition hover:bg-white/25"
-        >
-          <span aria-hidden>←</span> Volver al inicio
-        </Link>
-      ) : (
+      {variant === "home" ? (
         <Link
           href="/mapa"
           className="inline-flex min-h-12 items-center justify-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
         >
           Mapa grande
         </Link>
-      )}
+      ) : null}
       {supported ? (
         <button
           type="button"
@@ -65,20 +58,10 @@ export function MapExplorerFrame({
   if (variant === "fullPage") {
     return (
       <div className="flex h-dvh flex-col overflow-hidden bg-sky-deep text-white">
-        <div className="shrink-0 border-b border-white/15 px-3 py-3 sm:px-4">
-          <div className="mx-auto flex w-full max-w-[1800px] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-celeste/90">
-                Mapa Jugar
-              </p>
-              <h1 className="font-display text-lg font-bold sm:text-xl">
-                Explorá el mapa
-              </h1>
-            </div>
-            {toolbar}
+        <div className="relative min-h-0 flex-1 p-2 sm:p-3">
+          <div className="pointer-events-none absolute inset-x-3 top-3 z-30 flex justify-end sm:inset-x-4 sm:top-4">
+            <div className="pointer-events-auto">{toolbar}</div>
           </div>
-        </div>
-        <div className="min-h-0 flex-1 p-2 sm:p-3">
           <div
             ref={shellRef}
             className="mx-auto flex h-full w-full max-w-[1800px] min-h-0 flex-col overflow-hidden rounded-2xl border-2 border-celeste/40 bg-surface p-2 sm:rounded-3xl sm:p-3"

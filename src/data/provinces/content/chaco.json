@@ -1,0 +1,13 @@
+{
+  "name": "Chaco",
+  "slug": "chaco",
+  "animals": [
+    {
+      "name": "Aguará guazú",
+      "image": "/images/animals/aguara-chaco.webp",
+      "description": "El cánido más grande de Sudamérica, típico de pastizales y humedales."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}

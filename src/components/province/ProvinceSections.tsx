@@ -1,9 +1,15 @@
-import type { Province } from "@/types/province";
+import type { Province, ProvinceLocalContent } from "@/types/province";
 
 import { ProvinceExploreTabs } from "./ProvinceExploreTabs";
 import { ProvinceGallery } from "./ProvinceGallery";
 
-export function ProvinceSections({ province }: { province: Province }) {
+export function ProvinceSections({
+  province,
+  localContent,
+}: {
+  province: Province;
+  localContent: ProvinceLocalContent;
+}) {
   const p = (s: string) => `${province.slug}-${s}`;
 
   return (
@@ -24,7 +30,7 @@ export function ProvinceSections({ province }: { province: Province }) {
         <h2 id={p("explore-heading")} className="sr-only">
           Explorar contenido
         </h2>
-        <ProvinceExploreTabs province={province} />
+        <ProvinceExploreTabs province={province} localContent={localContent} />
       </section>
 
       <section className="space-y-3" aria-labelledby={p("gallery")}>

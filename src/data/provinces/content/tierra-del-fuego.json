@@ -1,0 +1,13 @@
+{
+  "name": "Tierra del Fuego",
+  "slug": "tierra-del-fuego",
+  "animals": [
+    {
+      "name": "Pingüino fueguino",
+      "image": "/images/animals/pinguino-tierra-del-fuego.webp",
+      "description": "Ave marina adaptada al frío austral y muy representativa del extremo sur."
+    }
+  ],
+  "plants": [],
+  "foods": []
+}
