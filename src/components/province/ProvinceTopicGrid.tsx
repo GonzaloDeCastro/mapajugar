@@ -4,7 +4,7 @@ import type { ProvinceContentItem } from "@/types/province";
 
 type Props = {
   items: ProvinceContentItem[];
-  topicLabel: "fauna" | "flora" | "comidas";
+  topicLabel: "fauna" | "flora" | "comidas" | "curiosidades";
 };
 
 const EMPTY_COPY: Record<Props["topicLabel"], string> = {
@@ -14,12 +14,15 @@ const EMPTY_COPY: Record<Props["topicLabel"], string> = {
     "Todavía no hay imágenes de flora cargadas para esta provincia. Pronto estarán disponibles.",
   comidas:
     "Las comidas típicas de esta provincia se están cargando. Volvé pronto para descubrirlas.",
+  curiosidades:
+    "Estamos preparando más curiosidades de esta provincia para que sigas aprendiendo.",
 };
 
 const EMPTY_ICON: Record<Props["topicLabel"], string> = {
   fauna: "🦊",
   flora: "🌿",
   comidas: "🧉",
+  curiosidades: "💡",
 };
 
 function isLocalImage(path: string) {

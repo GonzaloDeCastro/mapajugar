@@ -28,9 +28,8 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
     province.curiosity ??
     `¿Sabías que ${province.name} es parte del mapa vivo de Argentina? Seguí explorando para conocer más.`;
 
-  const textContent: Record<Extract<TabId, "tourism" | "curiosity">, string> = {
+  const textContent: Record<Extract<TabId, "tourism">, string[]> = {
     tourism: province.tourism,
-    curiosity: curiosityText,
   };
 
   return (
@@ -67,8 +66,15 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
 
       {TABS.map((tab) => {
         const isDataTab =
-          tab.id === "fauna" || tab.id === "flora" || tab.id === "foods";
-        const textTabId = tab.id as "tourism" | "curiosity";
+          tab.id === "fauna" ||
+          tab.id === "flora" ||
+          tab.id === "foods" ||
+          tab.id === "curiosity";
+        const textTabId = tab.id as "tourism";
+        const curiosityItems =
+          localContent.curiosities.length > 0
+            ? localContent.curiosities
+            : [{ name: "Dato curioso", image: "", description: curiosityText }];
         return (
           <div
             key={tab.id}
@@ -85,20 +91,31 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
                     ? "fauna"
                     : tab.id === "flora"
                       ? "flora"
-                      : "comidas"
+                      : tab.id === "foods"
+                        ? "comidas"
+                        : "curiosidades"
                 }
                 items={
                   tab.id === "fauna"
                     ? localContent.animals
                     : tab.id === "flora"
                       ? localContent.plants
-                      : localContent.foods
+                      : tab.id === "foods"
+                        ? localContent.foods
+                        : curiosityItems
                 }
               />
             ) : (
-              <p className="text-base font-semibold leading-relaxed text-foreground sm:text-[17px]">
-                {textContent[textTabId]}
-              </p>
+              <ul className="space-y-3">
+                {textContent[textTabId].map((place) => (
+                  <li
+                    key={place}
+                    className="rounded-xl border border-heading/15 bg-surface px-3 py-2 text-base font-semibold leading-relaxed text-foreground sm:text-[17px]"
+                  >
+                    🧭 {place}
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         );

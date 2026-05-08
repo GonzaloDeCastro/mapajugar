@@ -44,6 +44,7 @@ export type ProvinceLocalContent = {
   animals: ProvinceContentItem[];
   plants: ProvinceContentItem[];
   foods: ProvinceContentItem[];
+  curiosities: ProvinceContentItem[];
 };
 
 export type Province = {
@@ -56,6 +57,6 @@ export type Province = {
   flora: string;
   fauna: string;
   foods: string;
-  tourism: string;
+  tourism: string[];
   gallery: ProvinceImage[];
 };

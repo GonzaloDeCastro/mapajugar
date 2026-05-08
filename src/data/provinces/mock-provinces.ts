@@ -31,7 +31,11 @@ function stub(
     flora: `Vegetación típica de la región: formaciones nativas, bosques y pastizales según relieve y precipitación.`,
     fauna: `Aves, pequeños mamíferos y especies acuáticas en humedales y ríos; la observación responsable respeta cerramientos y períodos de reproducción.`,
     foods: `Platos regionales de cocina casera, productos locales de estación y especialidades de ferias.`,
-    tourism: `Circuitos naturales, localidades históricas y experiencias comunitarias. Consultá información oficial antes de viajar.`,
+    tourism: [
+      `Parque o reserva natural de ${name}`,
+      `Centro histórico y museos de ${name}`,
+      `Pueblo o circuito escénico de ${hint}`,
+    ],
     gallery: [],
   };
 }
@@ -49,8 +53,11 @@ export const PROVINCES: Province[] = [
       "Aves acuáticas y playeras, zorros, liebres y biodiversidad costera; en áreas protegidas conviene el avistaje con guías.",
     foods:
       "Asado, milanesas, fugazzetta, dulce de leche, quesos y vinos de la región vitivinícola bonaerense.",
-    tourism:
-      "Mar del Plata y la Costa Atlántica, Tandil y Sierra de la Ventana, San Antonio de Areco, Tigre y Delta, colonias agrícolas y museos rurales.",
+    tourism: [
+      "Mar del Plata y Costa Atlántica",
+      "Tandil y Sierra de la Ventana",
+      "Tigre y el Delta del Paraná",
+    ],
     curiosity:
       "La provincia tiene miles de kilómetros de costa atlántica: un mundo de playas, dunas y reservas para descubrir.",
     gallery: [...sampleGallery("Buenos Aires")],
@@ -67,8 +74,11 @@ export const PROVINCES: Province[] = [
       "Cóndor andino en sectores altos, zorros, liebres y avifauna variada en quebradas y embalses.",
     foods:
       "Choripán, empanadas, cabrito y alfajores artesanales; cervezas de la región y quesos serranos.",
-    tourism:
-      "Villa Carlos Paz, La Cumbrecita, Los Gigantes, La Falda, Mina Clavero y el Camino de las Altas Cumbres.",
+    tourism: [
+      "Villa Carlos Paz",
+      "La Cumbrecita",
+      "Camino de las Altas Cumbres",
+    ],
     curiosity:
       "Las Sierras de Córdoba son un clásico del centro del país: ríos, pueblos y miradores en cada curva.",
     gallery: [...sampleGallery("Córdoba")],
@@ -85,8 +95,11 @@ export const PROVINCES: Province[] = [
       "Vicuñas, zorros andinos, cóndores y aves de altura; en yungas, mayor diversidad de passeriformes.",
     foods:
       "Humitas, tamales, quinoa en guisos, chicha y dulces regionales de caña.",
-    tourism:
-      "Purmamarca y el Cerro de los Siete Colores, Tilcara, Humahuaca, Salinas Grandes y el Parque Nacional Calilegua.",
+    tourism: [
+      "Purmamarca y Cerro de los Siete Colores",
+      "Tilcara y Quebrada de Humahuaca",
+      "Parque Nacional Calilegua",
+    ],
     curiosity:
       "En pocos kilómetros podés pasar de la Puna alta a las Yungas: un cambio de paisaje dramático.",
     gallery: [...sampleGallery("Jujuy")],
@@ -124,8 +137,11 @@ export const PROVINCES: Province[] = [
       "Aves urbanas como palomas, tordo y loros barranqueros; en Reserva Ecológica, mayor biodiversidad ribereña.",
     foods:
       "Pizza, helado, cafés notables, parrilla porteña y pastelería tradicional.",
-    tourism:
-      "Caminito y La Boca, San Telmo, Recoleta, Puerto Madero, Teatro Colón y Costanera Sur.",
+    tourism: [
+      "Caminito y La Boca",
+      "San Telmo y Plaza de Mayo",
+      "Teatro Colón y Recoleta",
+    ],
     curiosity:
       "La ciudad mezcla parques enormes, historia y arte callejero: perfecta para recorrer con curiosidad.",
     gallery: [...sampleGallery("CABA")],
