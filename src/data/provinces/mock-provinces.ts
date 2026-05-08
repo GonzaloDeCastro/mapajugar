@@ -16,6 +16,134 @@ const sampleGallery = (prefix: string) =>
     },
   ] as const;
 
+const TOURISM_BY_PROVINCE: Record<ProvinceSlug, string[]> = {
+  "buenos-aires": [
+    "Mar del Plata y Costa Atlántica",
+    "Sierra de la Ventana (Parque Provincial Ernesto Tornquist)",
+    "Delta del Paraná en Tigre",
+  ],
+  catamarca: [
+    "Campo de Piedra Pómez (Antofagasta de la Sierra)",
+    "Ruta de los Seismiles y Paso de San Francisco",
+    "Cuesta del Portezuelo y El Rodeo",
+  ],
+  chaco: [
+    "Parque Nacional El Impenetrable",
+    "Resistencia, Ciudad de las Esculturas",
+    "Parque Nacional Chaco",
+  ],
+  chubut: [
+    "Península Valdés",
+    "Parque Nacional Los Alerces",
+    "Punta Tombo (reserva de pingüinos)",
+  ],
+  cordoba: [
+    "Valle de Calamuchita (Villa General Belgrano y La Cumbrecita)",
+    "Camino de las Altas Cumbres",
+    "Parque Nacional Quebrada del Condorito",
+  ],
+  corrientes: [
+    "Esteros del Iberá",
+    "Costanera y casco histórico de la ciudad de Corrientes",
+    "Parque Nacional Mburucuyá",
+  ],
+  "entre-rios": [
+    "Parque Nacional El Palmar",
+    "Termas de Federación",
+    "Palacio San José (Concepción del Uruguay)",
+  ],
+  formosa: [
+    "Bañado La Estrella",
+    "Parque Nacional Río Pilcomayo",
+    "Reserva de biosfera Laguna Oca (ciudad de Formosa)",
+  ],
+  jujuy: [
+    "Purmamarca y Cerro de los Siete Colores",
+    "Quebrada de Humahuaca (Tilcara y Humahuaca)",
+    "Salinas Grandes y Cuesta de Lipán",
+  ],
+  "la-pampa": [
+    "Parque Nacional Lihué Calel",
+    "Reserva Provincial Parque Luro",
+    "Laguna de Utracán y área de Guatraché",
+  ],
+  "la-rioja": [
+    "Parque Nacional Talampaya",
+    "Cuesta de Miranda",
+    "Parque Nacional Laguna Brava",
+  ],
+  mendoza: [
+    "Parque Provincial Aconcagua",
+    "Ruta del Vino en Luján de Cuyo y Valle de Uco",
+    "Puente del Inca y Parque Provincial Cañón del Atuel",
+  ],
+  misiones: [
+    "Cataratas del Iguazú",
+    "Ruinas Jesuíticas de San Ignacio Miní",
+    "Saltos del Moconá",
+  ],
+  neuquen: [
+    "Villa La Angostura y Parque Nacional Nahuel Huapi",
+    "San Martín de los Andes y Ruta de los Siete Lagos",
+    "Volcán Lanín y Parque Nacional Lanín",
+  ],
+  "rio-negro": [
+    "Bariloche y Circuito Chico",
+    "El Bolsón y Lago Puelo (comarca andina)",
+    "Las Grutas y costa del Golfo San Matías",
+  ],
+  salta: [
+    "Tren a las Nubes (San Antonio de los Cobres)",
+    "Cafayate y Quebrada de las Conchas",
+    "Cachi y Parque Nacional Los Cardones",
+  ],
+  "san-juan": [
+    "Parque Provincial Ischigualasto (Valle de la Luna)",
+    "Dique Cuesta del Viento (Rodeo)",
+    "Parque Nacional El Leoncito (Barreal)",
+  ],
+  "san-luis": [
+    "Parque Nacional Sierra de las Quijadas",
+    "Potrero de los Funes",
+    "Merlo y Reserva Florofaunística de Rincón del Este",
+  ],
+  "santa-cruz": [
+    "Glaciar Perito Moreno (Parque Nacional Los Glaciares)",
+    "El Chaltén y senderos del Fitz Roy",
+    "Cueva de las Manos (río Pinturas)",
+  ],
+  "santa-fe": [
+    "Monumento Nacional a la Bandera (Rosario)",
+    "Parque de la Independencia (Rosario)",
+    "Puente Colgante y Costanera de Santa Fe capital",
+  ],
+  "santiago-del-estero": [
+    "Termas de Río Hondo",
+    "Dique Frontal de Río Hondo",
+    "Parque Nacional Copo",
+  ],
+  "tierra-del-fuego": [
+    "Parque Nacional Tierra del Fuego",
+    "Canal Beagle y Faro Les Eclaireurs",
+    "Tren del Fin del Mundo (Ushuaia)",
+  ],
+  tucuman: [
+    "Casa Histórica de la Independencia (San Miguel de Tucumán)",
+    "Tafí del Valle y Dique La Angostura",
+    "Ruinas de Quilmes",
+  ],
+  "ciudad-autonoma-buenos-aires": [
+    "Caminito y barrio de La Boca",
+    "Plaza de Mayo y Catedral Metropolitana",
+    "Teatro Colón y Recoleta",
+  ],
+  "islas-malvinas": [
+    "Puerto Argentino/Stanley y su frente costero",
+    "Cementerio de Darwin",
+    "Voluntario Hill / Monte Longdon (sitios históricos)",
+  ],
+};
+
 function stub(
   slug: ProvinceSlug,
   name: string,
@@ -31,11 +159,7 @@ function stub(
     flora: `Vegetación típica de la región: formaciones nativas, bosques y pastizales según relieve y precipitación.`,
     fauna: `Aves, pequeños mamíferos y especies acuáticas en humedales y ríos; la observación responsable respeta cerramientos y períodos de reproducción.`,
     foods: `Platos regionales de cocina casera, productos locales de estación y especialidades de ferias.`,
-    tourism: [
-      `Parque o reserva natural de ${name}`,
-      `Centro histórico y museos de ${name}`,
-      `Pueblo o circuito escénico de ${hint}`,
-    ],
+    tourism: TOURISM_BY_PROVINCE[slug],
     gallery: [],
   };
 }
@@ -53,11 +177,7 @@ export const PROVINCES: Province[] = [
       "Aves acuáticas y playeras, zorros, liebres y biodiversidad costera; en áreas protegidas conviene el avistaje con guías.",
     foods:
       "Asado, milanesas, fugazzetta, dulce de leche, quesos y vinos de la región vitivinícola bonaerense.",
-    tourism: [
-      "Mar del Plata y Costa Atlántica",
-      "Tandil y Sierra de la Ventana",
-      "Tigre y el Delta del Paraná",
-    ],
+    tourism: TOURISM_BY_PROVINCE["buenos-aires"],
     curiosity:
       "La provincia tiene miles de kilómetros de costa atlántica: un mundo de playas, dunas y reservas para descubrir.",
     gallery: [...sampleGallery("Buenos Aires")],
@@ -74,11 +194,7 @@ export const PROVINCES: Province[] = [
       "Cóndor andino en sectores altos, zorros, liebres y avifauna variada en quebradas y embalses.",
     foods:
       "Choripán, empanadas, cabrito y alfajores artesanales; cervezas de la región y quesos serranos.",
-    tourism: [
-      "Villa Carlos Paz",
-      "La Cumbrecita",
-      "Camino de las Altas Cumbres",
-    ],
+    tourism: TOURISM_BY_PROVINCE.cordoba,
     curiosity:
       "Las Sierras de Córdoba son un clásico del centro del país: ríos, pueblos y miradores en cada curva.",
     gallery: [...sampleGallery("Córdoba")],
@@ -95,11 +211,7 @@ export const PROVINCES: Province[] = [
       "Vicuñas, zorros andinos, cóndores y aves de altura; en yungas, mayor diversidad de passeriformes.",
     foods:
       "Humitas, tamales, quinoa en guisos, chicha y dulces regionales de caña.",
-    tourism: [
-      "Purmamarca y Cerro de los Siete Colores",
-      "Tilcara y Quebrada de Humahuaca",
-      "Parque Nacional Calilegua",
-    ],
+    tourism: TOURISM_BY_PROVINCE.jujuy,
     curiosity:
       "En pocos kilómetros podés pasar de la Puna alta a las Yungas: un cambio de paisaje dramático.",
     gallery: [...sampleGallery("Jujuy")],
@@ -137,11 +249,7 @@ export const PROVINCES: Province[] = [
       "Aves urbanas como palomas, tordo y loros barranqueros; en Reserva Ecológica, mayor biodiversidad ribereña.",
     foods:
       "Pizza, helado, cafés notables, parrilla porteña y pastelería tradicional.",
-    tourism: [
-      "Caminito y La Boca",
-      "San Telmo y Plaza de Mayo",
-      "Teatro Colón y Recoleta",
-    ],
+    tourism: TOURISM_BY_PROVINCE["ciudad-autonoma-buenos-aires"],
     curiosity:
       "La ciudad mezcla parques enormes, historia y arte callejero: perfecta para recorrer con curiosidad.",
     gallery: [...sampleGallery("CABA")],

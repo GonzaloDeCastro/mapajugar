@@ -23,18 +23,10 @@ export function SiteHeader() {
           className="hidden items-center gap-1 sm:flex"
           aria-label="Principal"
         >
-          {NAV_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2.5 text-sm font-bold text-white/90 transition-colors hover:bg-white/10"
-            >
-              {item.label}
-            </Link>
-          ))}
+  
           <Link
             href="/mapa"
-            className="ml-1 min-h-12 rounded-full bg-sun px-5 py-2.5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
+            className="ml-1 min-h-12 rounded-full bg-sun px-5 py-5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
           >
             Mapa
           </Link>

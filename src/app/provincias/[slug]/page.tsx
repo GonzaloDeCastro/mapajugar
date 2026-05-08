@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -10,6 +9,7 @@ import {
   fetchProvinceBySlug,
   fetchProvinceLocalContentBySlug,
 } from "@/services/province-service";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ slug: string }>;
