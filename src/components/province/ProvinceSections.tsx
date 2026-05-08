@@ -1,7 +1,6 @@
 import type { Province, ProvinceLocalContent } from "@/types/province";
 
 import { ProvinceExploreTabs } from "./ProvinceExploreTabs";
-import { ProvinceGallery } from "./ProvinceGallery";
 
 export function ProvinceSections({
   province,
@@ -31,16 +30,6 @@ export function ProvinceSections({
           Explorar contenido
         </h2>
         <ProvinceExploreTabs province={province} localContent={localContent} />
-      </section>
-
-      <section className="space-y-3" aria-labelledby={p("gallery")}>
-        <h2
-          id={p("gallery")}
-          className="font-display text-xl font-bold text-heading sm:text-2xl"
-        >
-          Galería
-        </h2>
-        <ProvinceGallery images={province.gallery} />
       </section>
     </article>
   );

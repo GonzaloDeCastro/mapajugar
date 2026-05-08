@@ -25,13 +25,6 @@ export type ProvinceSlug =
   | "ciudad-autonoma-buenos-aires"
   | "islas-malvinas";
 
-export type ProvinceImage = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-};
-
 export type ProvinceContentItem = {
   name: string;
   image: string;
@@ -58,5 +51,4 @@ export type Province = {
   fauna: string;
   foods: string;
   tourism: string[];
-  gallery: ProvinceImage[];
 };

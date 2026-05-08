@@ -1,21 +1,5 @@
 import type { Province, ProvinceSlug } from "@/types/province";
 
-const sampleGallery = (prefix: string) =>
-  [
-    {
-      src: "/media/sample-landscape.svg",
-      alt: `${prefix}: paisaje representativo`,
-      width: 800,
-      height: 500,
-    },
-    {
-      src: "/media/sample-landscape.svg",
-      alt: `${prefix}: detalle natural`,
-      width: 800,
-      height: 500,
-    },
-  ] as const;
-
 const TOURISM_BY_PROVINCE: Record<ProvinceSlug, string[]> = {
   "buenos-aires": [
     "Mar del Plata y Costa Atlántica",
@@ -160,7 +144,6 @@ function stub(
     fauna: `Aves, pequeños mamíferos y especies acuáticas en humedales y ríos; la observación responsable respeta cerramientos y períodos de reproducción.`,
     foods: `Platos regionales de cocina casera, productos locales de estación y especialidades de ferias.`,
     tourism: TOURISM_BY_PROVINCE[slug],
-    gallery: [],
   };
 }
 
@@ -180,7 +163,6 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE["buenos-aires"],
     curiosity:
       "La provincia tiene miles de kilómetros de costa atlántica: un mundo de playas, dunas y reservas para descubrir.",
-    gallery: [...sampleGallery("Buenos Aires")],
   },
   {
     slug: "cordoba",
@@ -197,7 +179,6 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE.cordoba,
     curiosity:
       "Las Sierras de Córdoba son un clásico del centro del país: ríos, pueblos y miradores en cada curva.",
-    gallery: [...sampleGallery("Córdoba")],
   },
   {
     slug: "jujuy",
@@ -214,7 +195,6 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE.jujuy,
     curiosity:
       "En pocos kilómetros podés pasar de la Puna alta a las Yungas: un cambio de paisaje dramático.",
-    gallery: [...sampleGallery("Jujuy")],
   },
   stub("catamarca", "Catamarca", "CT", "los Valles Calchaquíes y la Puna"),
   stub("chaco", "Chaco", "CC", "el Chaco húmedo y el Impenetrable"),
@@ -252,7 +232,6 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE["ciudad-autonoma-buenos-aires"],
     curiosity:
       "La ciudad mezcla parques enormes, historia y arte callejero: perfecta para recorrer con curiosidad.",
-    gallery: [...sampleGallery("CABA")],
   },
 ];
 
