@@ -51,9 +51,9 @@ export default async function ProvincePage({ params }: Props) {
   return (
     <div className="min-h-dvh text-foreground">
       <SiteHeader />
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10">
-        <nav className="mb-8" aria-label="Migas de pan">
-          <ol className="flex flex-wrap items-center gap-2 text-sm font-bold sm:text-base">
+      <main className="mx-auto min-w-0 max-w-7xl px-4 py-6 sm:px-6 sm:py-10">
+        <nav className="mb-8 w-full" aria-label="Migas de pan">
+          <ol className="flex w-full flex-wrap items-center justify-start gap-2 text-left text-sm font-bold sm:text-base">
             <li>
               <Link
                 href="/mapa"
@@ -68,9 +68,13 @@ export default async function ProvincePage({ params }: Props) {
             <li className="font-display text-heading">{province.name}</li>
           </ol>
         </nav>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,40%)] lg:items-start">
+        <div className="flex min-w-0 flex-col-reverse gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,40%)] lg:items-start">
           <ProvinceSections province={province} localContent={localContent} />
-          <ProvinceSpotlightMap slug={province.slug} name={province.name} />
+          <ProvinceSpotlightMap
+            slug={province.slug}
+            name={province.name}
+            spotlightOverview={province.spotlightOverview}
+          />
         </div>
       </main>
     </div>

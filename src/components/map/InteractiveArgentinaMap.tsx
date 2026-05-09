@@ -90,13 +90,13 @@ export function InteractiveArgentinaMap({
 
   return (
     <figure
-      className={`flex h-full min-h-0 w-full max-w-full flex-1 flex-col gap-3 sm:flex-row sm:items-stretch ${className ?? ""}`}
+      className={`flex h-full min-h-0 w-full min-w-0 max-w-full flex-1 flex-col gap-2 sm:gap-3 sm:flex-row sm:items-stretch ${className ?? ""}`}
     >
-      <div className="flex h-full min-h-0 min-w-0 flex-col sm:w-[54%] sm:max-w-[54%]">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col sm:h-full sm:w-[54%] sm:max-w-[54%] sm:flex-none">
         <div
           id={labelId}
           aria-live="polite"
-          className="relative h-full min-h-[min(68vh,760px)] touch-manipulation rounded-2xl border border-heading/15 bg-surface shadow-[var(--shadow-card)] sm:min-h-0"
+          className="relative min-h-[min(52dvh,28rem)] flex-1 touch-manipulation rounded-2xl border border-heading/15 bg-surface shadow-[var(--shadow-card)] sm:h-full sm:min-h-0"
           onPointerMove={(e) => {
             if (e.pointerType !== "mouse") return;
             setTipPos({ x: e.clientX + 14, y: e.clientY + 14 });
@@ -254,7 +254,7 @@ export function InteractiveArgentinaMap({
         </div>
       </div>
 
-      <div className="relative flex h-full min-h-[min(54vh,580px)] min-w-0 flex-1 items-center justify-center overflow-hidden rounded-2xl border border-heading/15 bg-surface p-3 shadow-[var(--shadow-card)] sm:min-h-0 sm:p-6">
+      <div className="relative flex min-h-[min(42dvh,22rem)] min-w-0 flex-1 flex-col items-center justify-center overflow-hidden rounded-2xl border border-heading/15 bg-surface p-2 shadow-[var(--shadow-card)] sm:h-full sm:min-h-0 sm:p-6">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-celeste/15 to-transparent" />
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
           {activeProvince ? (

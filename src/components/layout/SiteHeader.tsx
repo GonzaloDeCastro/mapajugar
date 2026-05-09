@@ -26,7 +26,7 @@ export function SiteHeader() {
   
           <Link
             href="/mapa"
-            className="ml-1 min-h-12 rounded-full bg-sun px-5 py-5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
+            className="ml-1 inline-flex min-h-12 items-center rounded-full bg-sun px-5 py-2.5 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter] hover:brightness-110"
           >
             Mapa
           </Link>

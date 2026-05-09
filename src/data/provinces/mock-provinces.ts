@@ -1,5 +1,7 @@
 import type { Province, ProvinceSlug } from "@/types/province";
 
+import { PROVINCE_SPOTLIGHT } from "./province-spotlight";
+
 const TOURISM_BY_PROVINCE: Record<ProvinceSlug, string[]> = {
   "buenos-aires": [
     "Mar del Plata y Costa Atlántica",
@@ -144,6 +146,7 @@ function stub(
     fauna: `Aves, pequeños mamíferos y especies acuáticas en humedales y ríos; la observación responsable respeta cerramientos y períodos de reproducción.`,
     foods: `Platos regionales de cocina casera, productos locales de estación y especialidades de ferias.`,
     tourism: TOURISM_BY_PROVINCE[slug],
+    spotlightOverview: PROVINCE_SPOTLIGHT[slug],
   };
 }
 
@@ -163,6 +166,7 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE["buenos-aires"],
     curiosity:
       "La provincia tiene miles de kilómetros de costa atlántica: un mundo de playas, dunas y reservas para descubrir.",
+    spotlightOverview: PROVINCE_SPOTLIGHT["buenos-aires"],
   },
   {
     slug: "cordoba",
@@ -179,6 +183,7 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE.cordoba,
     curiosity:
       "Las Sierras de Córdoba son un clásico del centro del país: ríos, pueblos y miradores en cada curva.",
+    spotlightOverview: PROVINCE_SPOTLIGHT.cordoba,
   },
   {
     slug: "jujuy",
@@ -195,6 +200,7 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE.jujuy,
     curiosity:
       "En pocos kilómetros podés pasar de la Puna alta a las Yungas: un cambio de paisaje dramático.",
+    spotlightOverview: PROVINCE_SPOTLIGHT.jujuy,
   },
   stub("catamarca", "Catamarca", "CT", "los Valles Calchaquíes y la Puna"),
   stub("chaco", "Chaco", "CC", "el Chaco húmedo y el Impenetrable"),
@@ -232,6 +238,7 @@ export const PROVINCES: Province[] = [
     tourism: TOURISM_BY_PROVINCE["ciudad-autonoma-buenos-aires"],
     curiosity:
       "La ciudad mezcla parques enormes, historia y arte callejero: perfecta para recorrer con curiosidad.",
+    spotlightOverview: PROVINCE_SPOTLIGHT["ciudad-autonoma-buenos-aires"],
   },
 ];
 

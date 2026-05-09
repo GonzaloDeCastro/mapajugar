@@ -57,16 +57,16 @@ export function MapExplorerFrame({
 
   if (variant === "fullPage") {
     return (
-      <div className="flex h-dvh flex-col overflow-hidden bg-sky-deep text-white">
-        <div className="relative min-h-0 flex-1 p-2 sm:p-3">
-          <div className="pointer-events-none absolute inset-x-3 top-3 z-30 flex justify-end sm:inset-x-4 sm:top-4">
+      <div className="flex h-dvh max-h-dvh flex-col overflow-hidden bg-sky-deep text-white">
+        <div className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain p-2 sm:overflow-hidden sm:p-3">
+          <div className="pointer-events-none sticky top-2 z-30 mb-1 flex justify-end px-1 sm:absolute sm:inset-x-4 sm:top-4 sm:mb-0 sm:px-0">
             <div className="pointer-events-auto">{toolbar}</div>
           </div>
           <div
             ref={shellRef}
-            className="mx-auto flex h-full w-full max-w-[1800px] min-h-0 flex-col overflow-hidden rounded-2xl border-2 border-celeste/40 bg-surface p-2 sm:rounded-3xl sm:p-3"
+            className="mx-auto flex w-full max-w-[1800px] flex-col overflow-x-hidden rounded-2xl border-2 border-celeste/40 bg-surface p-2 sm:h-full sm:min-h-0 sm:flex-1 sm:overflow-hidden sm:rounded-3xl sm:p-3"
           >
-            <InteractiveArgentinaMap className="min-h-0 flex-1" />
+            <InteractiveArgentinaMap className="min-h-0 sm:flex-1 sm:min-h-0" />
           </div>
         </div>
       </div>

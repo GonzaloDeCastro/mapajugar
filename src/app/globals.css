@@ -81,6 +81,10 @@
   }
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: radial-gradient(
       120% 80% at 50% -10%,
@@ -88,9 +92,15 @@ body {
       transparent 55%
     ),
     linear-gradient(180deg, var(--background) 0%, var(--background-warm) 100%);
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+@media (min-width: 640px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 ::selection {

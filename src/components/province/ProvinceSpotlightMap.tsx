@@ -20,9 +20,10 @@ const MALVINAS_SLUG = "islas-malvinas" as const;
 type Props = {
   slug: ProvinceSlug;
   name: string;
+  spotlightOverview: string;
 };
 
-export function ProvinceSpotlightMap({ slug, name }: Props) {
+export function ProvinceSpotlightMap({ slug, name, spotlightOverview }: Props) {
   const pathRef = useRef<SVGPathElement | null>(null);
   const [viewBox, setViewBox] = useState<string>(
     slug === MALVINAS_SLUG ? MALVINAS_MAP_VIEW_BOX : MAP_VIEW_BOX,
@@ -49,14 +50,14 @@ export function ProvinceSpotlightMap({ slug, name }: Props) {
   }, [slug]);
 
   return (
-    <aside className="rounded-3xl border-2 border-celeste/35 bg-surface p-4 shadow-[var(--shadow-elevated)] lg:sticky lg:top-24">
-      <p className="text-center font-display text-xl font-bold text-heading sm:text-2xl">
+    <aside className="min-w-0 w-full rounded-3xl border-2 border-celeste/35 bg-surface p-4 text-left shadow-[var(--shadow-elevated)] lg:sticky lg:top-24">
+      <h1 className="text-left font-display text-xl font-bold tracking-tight text-heading sm:text-2xl">
         {name}
-      </p>
+      </h1>
       <svg
         viewBox={viewBox}
-        className="mt-3 h-[44vh] w-full min-h-[18rem] rounded-2xl bg-background-warm/75"
-        preserveAspectRatio="xMidYMid meet"
+        className="mt-3 h-[min(44vh,20rem)] w-full min-h-[12rem] rounded-2xl bg-background-warm/75 sm:h-[44vh] sm:min-h-[18rem]"
+        preserveAspectRatio="xMinYMid meet"
         aria-label={`Mapa de ${name}`}
         role="img"
       >
@@ -80,6 +81,18 @@ export function ProvinceSpotlightMap({ slug, name }: Props) {
           />
         )}
       </svg>
+      <div className="mt-4 border-t border-heading/10 pt-4">
+        <h2 className="sr-only">Sobre {name}</h2>
+        <div className="space-y-3 text-left text-sm font-medium leading-relaxed text-foreground-muted sm:text-[0.9375rem]">
+          {spotlightOverview
+            .split(/\n\n+/)
+            .map((block) => block.trim())
+            .filter(Boolean)
+            .map((paragraph, index) => (
+              <p key={`${slug}-spotlight-${index}`}>{paragraph}</p>
+            ))}
+        </div>
+      </div>
     </aside>
   );
 }

@@ -45,6 +45,11 @@ export type Province = {
   name: string;
   shortName: string;
   description: string;
+  /**
+   * Reseña junto al mapa SVG: historia breve, población aproximada y por qué
+   * la jurisdicción es conocida o relevante (censo 2022 INDEC u orientativo).
+   */
+  spotlightOverview: string;
   /** Dato corto tipo “¿Sabías que…?” para la pestaña Curiosidades */
   curiosity?: string;
   flora: string;
