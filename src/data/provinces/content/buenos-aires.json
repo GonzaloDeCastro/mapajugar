@@ -4,7 +4,7 @@
   "animals": [
     {
       "name": "Hornero",
-      "image": "/images/animals/hornero-buenos-aires.webp",
+      "image": "/images/animals/hornero.webp",
       "description": "Ave emblemática de Argentina, frecuente en áreas urbanas y rurales."
     }
   ],

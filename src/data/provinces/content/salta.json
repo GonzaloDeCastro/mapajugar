@@ -4,12 +4,12 @@
   "animals": [
     {
       "name": "Tapir",
-      "image": "/images/animals/tapir-salta.webp",
+      "image": "/images/animals/tapir.webp",
       "description": "Herbívoro de gran tamaño presente en selvas de montaña y yungas."
     },
     {
       "name": "Vicuña",
-      "image": "/images/animals/vicuna-argentina-salta.webp",
+      "image": "/images/animals/vicuna-argentina.webp",
       "description": "Camélido silvestre andino adaptado a la altura y al clima seco de la Puna."
     }
   ],

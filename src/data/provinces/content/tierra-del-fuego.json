@@ -4,7 +4,7 @@
   "animals": [
     {
       "name": "Pingüino fueguino",
-      "image": "/images/animals/pinguino-tierra-del-fuego.webp",
+      "image": "/images/animals/pinguino.webp",
       "description": "Ave marina adaptada al frío austral y muy representativa del extremo sur."
     }
   ],

@@ -4,12 +4,12 @@
   "animals": [
     {
       "name": "Huemul",
-      "image": "/images/animals/huemul-chubut.webp",
+      "image": "/images/animals/huemul.webp",
       "description": "Ciervo andino patagónico en peligro, asociado a bosques cordilleranos."
     },
     {
       "name": "Ballena franca austral",
-      "image": "/images/animals/Ballena-Aluminium-y-su-cr-chubut.webp",
+      "image": "/images/animals/Ballena-Aluminium-y-su-cr.webp",
       "description": "Cetáceo emblemático de la costa patagónica, visible en temporadas de avistaje."
     }
   ],

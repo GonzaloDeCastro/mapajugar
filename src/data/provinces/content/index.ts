@@ -7,6 +7,7 @@ import type {
   ProvinceLocalContent,
   ProvinceSlug,
 } from "@/types/province";
+import { getCanonicalAnimalDescription } from "./animal-descriptions";
 import { DEFAULT_ANIMALS_BY_PROVINCE } from "./animals.defaults";
 import { DEFAULT_CURIOSITIES_BY_PROVINCE } from "./curiosities.defaults";
 import { DEFAULT_FOODS_BY_PROVINCE } from "./foods.defaults";
@@ -14,11 +15,22 @@ import { DEFAULT_PLANTS_BY_PROVINCE } from "./plants.defaults";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "content");
 
+function applyCanonicalAnimalDescriptions(
+  items: ProvinceContentItem[],
+): ProvinceContentItem[] {
+  return items.map((item) => {
+    const canon = getCanonicalAnimalDescription(item.name);
+    return canon ? { ...item, description: canon } : item;
+  });
+}
+
 function emptyContent(slug: ProvinceSlug): ProvinceLocalContent {
   return {
     slug,
     name: slug,
-    animals: DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [],
+    animals: applyCanonicalAnimalDescriptions(
+      DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [],
+    ),
     plants: DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [],
     foods: DEFAULT_FOODS_BY_PROVINCE[slug] ?? [],
     curiosities: DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [],
@@ -65,7 +77,9 @@ function normalizeContent(
   return {
     slug,
     name: typeof r.name === "string" ? r.name : slug,
-    animals: mergeItems(DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [], animals),
+    animals: applyCanonicalAnimalDescriptions(
+      mergeItems(DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [], animals),
+    ),
     plants: mergeItems(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [], plants),
     foods: mergeItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], foods),
     curiosities: mergeItems(

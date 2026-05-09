@@ -2,7 +2,8 @@ import type { ProvinceContentItem, ProvinceSlug } from "@/types/province";
 
 /**
  * Fauna autóctona base por provincia.
- * Si luego querés agregar imágenes locales, podés completar `image`.
+ * Imágenes en `public/images/animals/`. Los textos salen de `animal-descriptions.ts`
+ * (una sola descripción por nombre de especie en todo el sitio).
  */
 export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
   ProvinceSlug,
@@ -11,303 +12,301 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
   "buenos-aires": [
     {
       name: "Hornero",
-      image: "/images/animals/hornero-buenos-aires.webp",
-      description: "Ave nativa muy común en ambientes urbanos y rurales.",
+      image: "/images/animals/hornero.webp",
+      description: "",
     },
     {
       name: "Ciervo de los pantanos",
-      image: "",
-      description:
-        "Cérvido de humedales del delta y sectores ribereños bonaerenses.",
+      image: "/images/animals/ciervo-de-los-pantanos.webp",
+      description: "",
     },
   ],
   catamarca: [
     {
       name: "Mara patagónica",
-      image: "/images/animals/mara-rio-negro-catamarca.webp",
-      description: "Roedor de ambientes áridos y abiertos del oeste argentino.",
+      image: "/images/animals/mara-rio-negro.webp",
+      description: "",
     },
     {
       name: "Vicuña",
-      image: "",
-      description: "Camélido andino típico de la Puna de altura.",
+      image: "/images/animals/vicuna-argentina.webp",
+      description: "",
     },
   ],
   chaco: [
     {
       name: "Aguará guazú",
-      image: "/images/animals/aguara-chaco.webp",
-      description: "El cánido más grande de Sudamérica, de pastizales y esteros.",
+      image: "/images/animals/aguara.webp",
+      description: "",
     },
     {
       name: "Tatú carreta",
       image: "",
-      description: "Armadillo chaqueño de gran tamaño y hábitos nocturnos.",
+      description: "",
     },
   ],
   chubut: [
     {
       name: "Huemul",
-      image: "/images/animals/huemul-chubut.webp",
-      description: "Ciervo andino patagónico, especie emblemática de conservación.",
+      image: "/images/animals/huemul.webp",
+      description: "",
     },
     {
       name: "Ballena franca austral",
-      image: "/images/animals/Ballena-Aluminium-y-su-cr-chubut.webp",
-      description: "Cetáceo icónico de la costa atlántica patagónica.",
+      image: "/images/animals/Ballena-Aluminium-y-su-cr.webp",
+      description: "",
     },
   ],
   cordoba: [
     {
       name: "Cóndor andino",
-      image: "",
-      description: "Ave de gran envergadura presente en zonas altas serranas.",
+      image: "/images/animals/condor-andino.webp",
+      description: "",
     },
     {
       name: "Puma",
-      image: "",
-      description: "Felino nativo de áreas serranas y de monte.",
+      image: "/images/animals/puma-argentino.webp",
+      description: "",
     },
   ],
   corrientes: [
     {
       name: "Carpincho",
-      image: "/images/animals/carpincho-entre-rios.webp",
-      description: "Mamífero semiacuático representativo de esteros y lagunas.",
+      image: "/images/animals/carpincho.webp",
+      description: "",
     },
     {
       name: "Yacaré overo",
-      image: "",
-      description: "Reptil típico de humedales del litoral.",
+      image: "/images/animals/yacare.webp",
+      description: "",
     },
   ],
   "entre-rios": [
     {
       name: "Carpincho",
-      image: "/images/animals/carpincho-entre-rios.webp",
-      description: "Roedor semiacuático habitual de ríos y bañados.",
+      image: "/images/animals/carpincho.webp",
+      description: "",
     },
     {
       name: "Lobito de río",
       image: "",
-      description: "Mustélido asociado a cursos de agua limpios.",
+      description: "",
     },
   ],
   formosa: [
     {
       name: "Lagarto overo",
-      image: "/images/animals/lagarto-overo-formosa.webp",
-      description: "Gran reptil nativo de ambientes cálidos del norte.",
+      image: "/images/animals/lagarto-overo.webp",
+      description: "",
     },
     {
       name: "Oso hormiguero",
       image: "",
-      description: "Mamífero insectívoro característico del Gran Chaco.",
+      description: "",
     },
   ],
   jujuy: [
     {
       name: "Llama",
-      image: "/images/animals/llama-jujuy.webp",
-      description: "Camélido andino de gran importancia cultural y productiva.",
+      image: "/images/animals/llama.webp",
+      description: "",
     },
     {
       name: "Vicuña",
-      image: "",
-      description: "Camélido silvestre de altura en la Puna jujeña.",
+      image: "/images/animals/vicuna-argentina.webp",
+      description: "",
     },
   ],
   "la-pampa": [
     {
       name: "Puma",
-      image: "/images/animals/puma-argentino-la-pampa.webp",
-      description: "Predador tope en ambientes de pastizal y monte.",
+      image: "/images/animals/puma-argentino.webp",
+      description: "",
     },
     {
       name: "Ñandú",
-      image: "",
-      description: "Ave corredora típica de llanuras abiertas.",
+      image: "/images/animals/niandu.webp",
+      description: "",
     },
   ],
   "la-rioja": [
     {
       name: "Ñandú",
-      image: "/images/animals/niandu-la-rioja.webp",
-      description: "Ave corredora adaptada a ambientes secos y abiertos.",
+      image: "/images/animals/niandu.webp",
+      description: "",
     },
     {
       name: "Guanaco",
-      image: "",
-      description: "Camélido silvestre presente en zonas áridas del oeste.",
+      image: "/images/animals/guanaco.webp",
+      description: "",
     },
   ],
   mendoza: [
     {
       name: "Cóndor andino",
-      image: "/images/animals/condor-andino-mendoza.webp",
-      description: "Ave emblema de los Andes mendocinos.",
+      image: "/images/animals/condor-andino.webp",
+      description: "",
     },
     {
       name: "Guanaco",
-      image: "",
-      description: "Camélido nativo de estepas y piedemonte andino.",
+      image: "/images/animals/guanaco.webp",
+      description: "",
     },
   ],
   misiones: [
     {
       name: "Yaguareté",
       image: "/images/animals/yaguarete.webp",
-      description: "Felino más grande de América, símbolo de la selva misionera.",
+      description: "",
     },
     {
       name: "Mono carayá",
-      image: "/images/animals/mono-caraya-misiones.webp",
-      description: "Primate de bosques subtropicales del noreste.",
+      image: "/images/animals/mono-caraya.webp",
+      description: "",
     },
   ],
   neuquen: [
     {
       name: "Zorro gris patagónico",
-      image: "/images/animals/Zorro-gris-neuquen.webp",
-      description: "Mamífero adaptable de estepa y precordillera.",
+      image: "/images/animals/Zorro-gris.webp",
+      description: "",
     },
     {
       name: "Pudú",
-      image: "",
-      description: "Ciervo pequeño de bosques andino-patagónicos.",
+      image: "/images/animals/Pudu-Argentina.webp",
+      description: "",
     },
   ],
   "rio-negro": [
     {
       name: "Mara patagónica",
-      image: "/images/animals/mara-rio-negro-catamarca.webp",
-      description: "Roedor característico de la estepa del norte patagónico.",
+      image: "/images/animals/mara-rio-negro.webp",
+      description: "",
     },
     {
       name: "Guanaco",
-      image: "",
-      description: "Camélido frecuente en mesetas y valles áridos.",
+      image: "/images/animals/guanaco.webp",
+      description: "",
     },
   ],
   salta: [
     {
       name: "Tapir",
-      image: "/images/animals/tapir-salta.webp",
-      description: "Herbívoro de gran tamaño de selvas de montaña y yungas.",
+      image: "/images/animals/tapir.webp",
+      description: "",
     },
     {
       name: "Vicuña",
-      image: "/images/animals/vicuna-argentina-salta.webp",
-      description: "Camélido silvestre de ambientes altos y secos.",
+      image: "/images/animals/vicuna-argentina.webp",
+      description: "",
     },
   ],
   "san-juan": [
     {
       name: "Guanaco",
-      image: "",
-      description: "Camélido de ambientes áridos precordilleranos.",
+      image: "/images/animals/guanaco.webp",
+      description: "",
     },
     {
       name: "Mara patagónica",
-      image: "",
-      description: "Roedor de zonas abiertas y secas de Cuyo.",
+      image: "/images/animals/mara-rio-negro.webp",
+      description: "",
     },
   ],
   "san-luis": [
     {
       name: "Peludo argentino",
-      image: "/images/animals/peludo-argentino-san-luis.webp",
-      description: "Armadillo pequeño de hábitos crepusculares y nocturnos.",
+      image: "/images/animals/peludo-argentino.webp",
+      description: "",
     },
     {
       name: "Zorro gris",
-      image: "",
-      description: "Canino nativo de sierras y llanuras semiáridas.",
+      image: "/images/animals/Zorro-gris.webp",
+      description: "",
     },
   ],
   "santa-cruz": [
     {
       name: "Pudú",
-      image: "/images/animals/Pudu-Argentina-santa-cruz.webp",
-      description: "Ciervo pequeño de bosques fríos del sur.",
+      image: "/images/animals/Pudu-Argentina.webp",
+      description: "",
     },
     {
       name: "Guanaco",
-      image: "",
-      description: "Camélido muy representativo de la estepa santacruceña.",
+      image: "/images/animals/guanaco.webp",
+      description: "",
     },
   ],
   "santa-fe": [
     {
       name: "Yacaré",
-      image: "/images/animals/yacare-santa-fe.webp",
-      description: "Reptil nativo de lagunas y humedales litoraleños.",
+      image: "/images/animals/yacare.webp",
+      description: "",
     },
     {
       name: "Carpincho",
-      image: "",
-      description: "Mamífero semiacuático abundante en ambientes ribereños.",
+      image: "/images/animals/carpincho.webp",
+      description: "",
     },
   ],
   "santiago-del-estero": [
     {
       name: "Pecarí de collar",
       image: "",
-      description: "Mamífero chaqueño que habita montes secos y espinales.",
+      description: "",
     },
     {
       name: "Tatú mulita",
       image: "",
-      description: "Armadillo frecuente en suelos blandos del Chaco seco.",
+      description: "",
     },
   ],
   "tierra-del-fuego": [
     {
       name: "Pingüino fueguino",
-      image: "/images/animals/pinguino-tierra-del-fuego.webp",
-      description: "Ave marina adaptada a aguas frías del sur austral.",
+      image: "/images/animals/pinguino.webp",
+      description: "",
     },
     {
       name: "Cauquén",
       image: "",
-      description: "Ave migratoria característica de ambientes fueguinos.",
+      description: "",
     },
   ],
   tucuman: [
     {
       name: "Tucán grande",
-      image: "/images/animals/Tucán-Grande-tucuman.webp",
-      description: "Ave colorida típica de selvas pedemontanas.",
+      image: "/images/animals/Tucán-Grande.webp",
+      description: "",
     },
     {
       name: "Tapir",
-      image: "",
-      description: "Mamífero nativo de yungas y selvas del noroeste.",
+      image: "/images/animals/tapir.webp",
+      description: "",
     },
   ],
   "ciudad-autonoma-buenos-aires": [
     {
       name: "Hornero",
-      image: "",
-      description: "Ave nacional presente en parques y arbolado urbano.",
+      image: "/images/animals/hornero.webp",
+      description: "",
     },
     {
       name: "Benteveo",
       image: "",
-      description: "Ave urbana común en plazas y reservas costeras.",
+      description: "",
     },
   ],
   "islas-malvinas": [
     {
       name: "Pingüino de penacho amarillo",
-      image: "",
-      description: "Ave marina subantártica frecuente en costas malvinenses.",
+      image: "/images/animals/pinguino.webp",
+      description: "",
     },
     {
       name: "Albatros de ceja negra",
       image: "",
-      description: "Gran ave oceánica asociada a ambientes fríos australes.",
+      description: "",
     },
   ],
 };
-

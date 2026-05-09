@@ -4,7 +4,7 @@
   "animals": [
     {
       "name": "Llama",
-      "image": "/images/animals/llama-jujuy.webp",
+      "image": "/images/animals/llama.webp",
       "description": "Camélido andino asociado a la Puna y a la cultura local."
     }
   ],
