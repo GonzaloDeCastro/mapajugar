@@ -38,7 +38,7 @@ jobs:
           echo "dir=$DIR" >> "$GITHUB_OUTPUT"
 
       # FTP plano (sin SSL) + modo pasivo. FTPS/SFTP suelen hacer timeout desde GitHub Actions.
-      # Secrets: FTP_SERVER=ftp.figprojects.com (no la IP), FTP_TARGET_DIR_PRD=public_html/mapajugar
+      # FTP_SERVER: hostname de hPanel (FTP Accounts) o IP 147.93.37.124 — NO uses ftp.figprojects.com (no existe en DNS).
       - name: Sync files to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
