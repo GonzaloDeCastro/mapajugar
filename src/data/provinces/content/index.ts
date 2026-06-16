@@ -12,6 +12,7 @@ import { getCanonicalAnimalDescription } from "./animal-descriptions";
 import { DEFAULT_ANIMALS_BY_PROVINCE } from "./animals.defaults";
 import { DEFAULT_CURIOSITIES_BY_PROVINCE } from "./curiosities.defaults";
 import { DEFAULT_FOODS_BY_PROVINCE } from "./foods.defaults";
+import { FOOD_IMAGE_URLS } from "./food-images";
 import { DEFAULT_PLANTS_BY_PROVINCE } from "./plants.defaults";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "content");
@@ -19,13 +20,14 @@ const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "conten
 function withAssetPath(image: string): string {
   const trimmed = image.trim();
   if (!trimmed) return image;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
   return withBasePath(trimmed);
 }
 
 function mapItemAssets(items: ProvinceContentItem[]): ProvinceContentItem[] {
   return items.map((item) => ({
     ...item,
-    image: withAssetPath(item.image),
+    image: withAssetPath(item.image || FOOD_IMAGE_URLS[item.name] || ""),
   }));
 }
 

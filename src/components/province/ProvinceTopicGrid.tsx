@@ -23,8 +23,9 @@ const EMPTY_ICON: Record<Props["topicLabel"], string> = {
   curiosidades: "💡",
 };
 
-function isLocalImage(path: string) {
-  return typeof path === "string" && path.trim().includes("/images/");
+function hasDisplayableImage(path: string) {
+  const value = path.trim();
+  return value.includes("/images/") || /^https?:\/\//i.test(value);
 }
 
 export function ProvinceTopicGrid({ items, topicLabel }: Props) {
@@ -44,7 +45,7 @@ export function ProvinceTopicGrid({ items, topicLabel }: Props) {
   return (
     <ul className="grid w-full grid-cols-1 items-stretch gap-4 sm:grid-cols-2">
       {items.map((item) => {
-        const hasImage = isLocalImage(item.image);
+        const hasImage = hasDisplayableImage(item.image);
         return (
           <li
             key={`${topicLabel}-${item.name}`}
@@ -57,6 +58,7 @@ export function ProvinceTopicGrid({ items, topicLabel }: Props) {
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>

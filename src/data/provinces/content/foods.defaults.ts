@@ -2,7 +2,7 @@ import type { ProvinceContentItem, ProvinceSlug } from "@/types/province";
 
 /**
  * Comidas iniciales por provincia.
- * La imagen queda en placeholder (string vacío) hasta cargar assets locales.
+ * Las imágenes remotas (Wikimedia Commons) están en `food-images.ts`.
  */
 export const DEFAULT_FOODS_BY_PROVINCE: Record<
   ProvinceSlug,
