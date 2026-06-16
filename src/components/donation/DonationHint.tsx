@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 
 type Props = {
@@ -56,7 +55,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
             </p>
             <button
               type="button"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-lg leading-none transition hover:bg-white/20"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white/10 text-lg leading-none transition-[background-color,filter,transform] hover:bg-white/25 hover:brightness-110 active:scale-95"
               aria-label="Cerrar"
               onClick={() => setOpen(false)}
             >
@@ -66,7 +65,8 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
 
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="shrink-0 self-center rounded-xl bg-white p-2">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={qrPath}
                 alt="Código QR para donar"
                 width={112}
@@ -85,7 +85,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
                   href={paypalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-sun px-4 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition hover:brightness-110"
+                  className="inline-flex min-h-10 cursor-pointer items-center justify-center rounded-full bg-sun px-4 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98]"
                 >
                   Donar con PayPal
                 </a>
@@ -100,7 +100,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
         aria-expanded={open}
         aria-controls={open ? panelId : undefined}
         aria-label="Apoyar el proyecto"
-        className="pointer-events-auto inline-flex h-10 items-center gap-1.5 rounded-full border border-white/25 bg-sky-deep/80 px-3 text-xs font-bold text-white shadow-[var(--shadow-card)] backdrop-blur-md transition hover:bg-sky-deep/95 sm:h-11 sm:gap-2 sm:px-4 sm:text-sm"
+        className="pointer-events-auto inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-full border border-white/25 bg-sky-deep/80 px-3 text-xs font-bold text-white shadow-[var(--shadow-card)] backdrop-blur-md transition-[filter,transform,background-color,box-shadow,border-color] hover:border-sun/60 hover:bg-sky-deep hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] sm:h-11 sm:gap-2 sm:px-4 sm:text-sm"
         onClick={() => setOpen((value) => !value)}
       >
         <svg

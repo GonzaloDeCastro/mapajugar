@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/routing/base-path";
+
 export const DONATION_QR_PATH = "/inputs/payments/QR_CODE.png";
 
 export type DonationConfig = {
@@ -15,7 +17,7 @@ export function getDonationConfig(): DonationConfig {
 
   return {
     paypalUrl,
-    qrPath: DONATION_QR_PATH,
+    qrPath: withBasePath(DONATION_QR_PATH),
     enabled: Boolean(paypalUrl || DONATION_QR_PATH),
   };
 }

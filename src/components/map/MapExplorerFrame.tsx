@@ -29,7 +29,7 @@ export function MapExplorerFrame({
       {variant === "home" ? (
         <Link
           href="/mapa"
-          className="inline-flex min-h-12 items-center justify-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
+          className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98]"
         >
           Mapa grande
         </Link>
@@ -38,10 +38,10 @@ export function MapExplorerFrame({
         <button
           type="button"
           onClick={() => void toggle()}
-          className={`inline-flex min-h-12 items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform] active:scale-[0.98] ${
+          className={`inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform,box-shadow,border-color] hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] ${
             variant === "fullPage"
-              ? "border-sun bg-sun text-sun-ink hover:brightness-110"
-              : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60"
+              ? "border-sun bg-sun text-sun-ink hover:brightness-110 hover:border-sun"
+              : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60 hover:brightness-105"
           }`}
         >
           {active ? "Salir de pantalla completa" : "Pantalla completa"}
