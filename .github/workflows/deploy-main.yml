@@ -29,14 +29,15 @@ jobs:
           paypal_url: ${{ secrets.PAYPAL_URL }}
         run: npm run build
 
-      # Hostinger shared hosting: SFTP en puerto 65002 (no FTP/FTPS 21).
+      # FTP plano (sin SSL) + modo pasivo. FTPS/SFTP suelen hacer timeout desde GitHub Actions.
+      # Secrets: FTP_SERVER=ftp.figprojects.com (no la IP), FTP_TARGET_DIR_PRD=public_html/mapajugar/
       - name: Sync files to Hostinger
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 65002
-          local_path: "./out/*"
-          remote_path: ${{ secrets.FTP_TARGET_DIR_PRD }}
-          sftp_only: true
+          server-dir: ${{ secrets.FTP_TARGET_DIR_PRD }}
+          local-dir: ./out/
+          protocol: ftp
+          port: 21
