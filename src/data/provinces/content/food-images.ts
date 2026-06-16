@@ -21,9 +21,9 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Cordero patagónico":
     "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
   "Torta galesa":
-    "https://upload.wikimedia.org/wikipedia/commons/4/4c/Welsh_cakes.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d3/Torta_negra_galesa_%28Y_Wladfa%2C_Argentina%29.JPG",
   "Trucha de río":
-    "https://upload.wikimedia.org/wikipedia/commons/3/3a/Oncorhynchus_mykiss.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/cb/Man_holding_a_rainbow_trout_%28Oncorhynchus_mykiss%29.jpg",
   "Cabrito serrano":
     "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
   "Choripán cordobés":
@@ -81,7 +81,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Chivito neuquino":
     "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
   "Trucha patagónica":
-    "https://upload.wikimedia.org/wikipedia/commons/3/3a/Oncorhynchus_mykiss.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/c/cb/Man_holding_a_rainbow_trout_%28Oncorhynchus_mykiss%29.jpg",
   "Torta frita patagónica":
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Cordero al asador":
@@ -121,7 +121,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Empanadas santiagueñas":
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   "Rosquete santiagueño":
-    "https://upload.wikimedia.org/wikipedia/commons/4/4c/Welsh_cakes.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Centolla fueguina":
     "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chile_King_Crab.jpg",
   "Merluza negra":

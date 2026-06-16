@@ -33,9 +33,9 @@ export const HISTORY_IMAGE_URLS: Record<string, string> = {
   "Bañado La Estrella":
     "https://upload.wikimedia.org/wikipedia/commons/6/6a/Flying_Over_Esteros_del_Iber%C3%A1_The_kingdom_of_water%2C_North-eastern_Argentina.jpg",
   "Quebrada de Humahuaca milenaria":
-    "https://upload.wikimedia.org/wikipedia/commons/d/db/AR378-Quebrada_de_Humahuaca.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/6a/Quebrada_de_Humahuaca_%28Argentine%29.JPG",
   "Belgrano y la Bandera en Jujuy":
-    "https://upload.wikimedia.org/wikipedia/commons/1/1a/Bandera_de_Argentina.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Bendici%C3%B3n_de_la_Bandera_en_Jujuy.jpg",
   "El caldén, árbol emblema":
     "https://upload.wikimedia.org/wikipedia/commons/7/73/Prosopis_caldenia.jpg",
   "Cruce de rutas históricas":
@@ -65,9 +65,9 @@ export const HISTORY_IMAGE_URLS: Record<string, string> = {
   "Un mosaico de paisajes":
     "https://upload.wikimedia.org/wikipedia/commons/d/db/AR378-Quebrada_de_Humahuaca.jpg",
   "Sarmiento y la educación":
-    "https://upload.wikimedia.org/wikipedia/commons/4/4f/Domingo_Faustino_Sarmiento.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/49/Domingo_Faustino_Sarmiento_militar.jpg",
   "Ischigualasto y fósiles únicos":
-    "https://upload.wikimedia.org/wikipedia/commons/4/46/Talampaya_National_Park_-_54491616809.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/f3/A_-_Valle_de_la_Luna%2C_el_hongo%2C_San_Juan%2C_Argentina.jpg",
   "Posta de caminos interiores":
     "https://upload.wikimedia.org/wikipedia/commons/7/73/Prosopis_caldenia.jpg",
   "Paisaje de sierras y salinas":
