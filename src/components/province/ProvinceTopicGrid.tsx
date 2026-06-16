@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { ProvinceContentItem } from "@/types/province";
 
 type Props = {
@@ -26,7 +24,7 @@ const EMPTY_ICON: Record<Props["topicLabel"], string> = {
 };
 
 function isLocalImage(path: string) {
-  return typeof path === "string" && path.trim().startsWith("/images/");
+  return typeof path === "string" && path.trim().includes("/images/");
 }
 
 export function ProvinceTopicGrid({ items, topicLabel }: Props) {
@@ -54,13 +52,12 @@ export function ProvinceTopicGrid({ items, topicLabel }: Props) {
           >
             {hasImage ? (
               <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-background-warm">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={item.image}
                   alt={item.name}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
                   loading="lazy"
-                  className="object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
             ) : (

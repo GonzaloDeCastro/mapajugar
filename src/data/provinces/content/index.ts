@@ -7,6 +7,7 @@ import type {
   ProvinceLocalContent,
   ProvinceSlug,
 } from "@/types/province";
+import { withBasePath } from "@/lib/routing/base-path";
 import { getCanonicalAnimalDescription } from "./animal-descriptions";
 import { DEFAULT_ANIMALS_BY_PROVINCE } from "./animals.defaults";
 import { DEFAULT_CURIOSITIES_BY_PROVINCE } from "./curiosities.defaults";
@@ -14,6 +15,19 @@ import { DEFAULT_FOODS_BY_PROVINCE } from "./foods.defaults";
 import { DEFAULT_PLANTS_BY_PROVINCE } from "./plants.defaults";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "content");
+
+function withAssetPath(image: string): string {
+  const trimmed = image.trim();
+  if (!trimmed) return image;
+  return withBasePath(trimmed);
+}
+
+function mapItemAssets(items: ProvinceContentItem[]): ProvinceContentItem[] {
+  return items.map((item) => ({
+    ...item,
+    image: withAssetPath(item.image),
+  }));
+}
 
 function applyCanonicalAnimalDescriptions(
   items: ProvinceContentItem[],
@@ -28,12 +42,14 @@ function emptyContent(slug: ProvinceSlug): ProvinceLocalContent {
   return {
     slug,
     name: slug,
-    animals: applyCanonicalAnimalDescriptions(
-      DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [],
+    animals: mapItemAssets(
+      applyCanonicalAnimalDescriptions(
+        DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [],
+      ),
     ),
-    plants: DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [],
-    foods: DEFAULT_FOODS_BY_PROVINCE[slug] ?? [],
-    curiosities: DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [],
+    plants: mapItemAssets(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? []),
+    foods: mapItemAssets(DEFAULT_FOODS_BY_PROVINCE[slug] ?? []),
+    curiosities: mapItemAssets(DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? []),
   };
 }
 
@@ -77,14 +93,17 @@ function normalizeContent(
   return {
     slug,
     name: typeof r.name === "string" ? r.name : slug,
-    animals: applyCanonicalAnimalDescriptions(
-      mergeItems(DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [], animals),
+    animals: mapItemAssets(
+      applyCanonicalAnimalDescriptions(
+        mergeItems(DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [], animals),
+      ),
     ),
-    plants: mergeItems(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [], plants),
-    foods: mergeItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], foods),
-    curiosities: mergeItems(
-      DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [],
-      curiosities,
+    plants: mapItemAssets(
+      mergeItems(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [], plants),
+    ),
+    foods: mapItemAssets(mergeItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], foods)),
+    curiosities: mapItemAssets(
+      mergeItems(DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [], curiosities),
     ),
   } as ProvinceLocalContent;
 }
