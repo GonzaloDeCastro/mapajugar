@@ -13,6 +13,8 @@ import { DEFAULT_ANIMALS_BY_PROVINCE } from "./animals.defaults";
 import { DEFAULT_CURIOSITIES_BY_PROVINCE } from "./curiosities.defaults";
 import { DEFAULT_FOODS_BY_PROVINCE } from "./foods.defaults";
 import { FOOD_IMAGE_URLS } from "./food-images";
+import { HISTORY_IMAGE_URLS } from "./history-images";
+import { PLANT_IMAGE_URLS } from "./plant-images";
 import { DEFAULT_PLANTS_BY_PROVINCE } from "./plants.defaults";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "content");
@@ -24,10 +26,22 @@ function withAssetPath(image: string): string {
   return withBasePath(trimmed);
 }
 
-function mapItemAssets(items: ProvinceContentItem[]): ProvinceContentItem[] {
+function resolveItemImage(
+  item: ProvinceContentItem,
+  fallbackUrls?: Record<string, string>,
+): string {
+  const raw = item.image.trim() || fallbackUrls?.[item.name]?.trim() || "";
+  if (!raw) return "";
+  return withAssetPath(raw);
+}
+
+function mapItems(
+  items: ProvinceContentItem[],
+  fallbackUrls?: Record<string, string>,
+): ProvinceContentItem[] {
   return items.map((item) => ({
     ...item,
-    image: withAssetPath(item.image || FOOD_IMAGE_URLS[item.name] || ""),
+    image: resolveItemImage(item, fallbackUrls),
   }));
 }
 
@@ -44,14 +58,17 @@ function emptyContent(slug: ProvinceSlug): ProvinceLocalContent {
   return {
     slug,
     name: slug,
-    animals: mapItemAssets(
+    animals: mapItems(
       applyCanonicalAnimalDescriptions(
         DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [],
       ),
     ),
-    plants: mapItemAssets(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? []),
-    foods: mapItemAssets(DEFAULT_FOODS_BY_PROVINCE[slug] ?? []),
-    curiosities: mapItemAssets(DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? []),
+    plants: mapItems(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [], PLANT_IMAGE_URLS),
+    foods: mapItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], FOOD_IMAGE_URLS),
+    curiosities: mapItems(
+      DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [],
+      HISTORY_IMAGE_URLS,
+    ),
   };
 }
 
@@ -95,17 +112,22 @@ function normalizeContent(
   return {
     slug,
     name: typeof r.name === "string" ? r.name : slug,
-    animals: mapItemAssets(
+    animals: mapItems(
       applyCanonicalAnimalDescriptions(
         mergeItems(DEFAULT_ANIMALS_BY_PROVINCE[slug] ?? [], animals),
       ),
     ),
-    plants: mapItemAssets(
+    plants: mapItems(
       mergeItems(DEFAULT_PLANTS_BY_PROVINCE[slug] ?? [], plants),
+      PLANT_IMAGE_URLS,
     ),
-    foods: mapItemAssets(mergeItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], foods)),
-    curiosities: mapItemAssets(
+    foods: mapItems(
+      mergeItems(DEFAULT_FOODS_BY_PROVINCE[slug] ?? [], foods),
+      FOOD_IMAGE_URLS,
+    ),
+    curiosities: mapItems(
       mergeItems(DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [], curiosities),
+      HISTORY_IMAGE_URLS,
     ),
   } as ProvinceLocalContent;
 }

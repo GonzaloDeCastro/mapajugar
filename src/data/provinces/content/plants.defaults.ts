@@ -2,8 +2,7 @@ import type { ProvinceContentItem, ProvinceSlug } from "@/types/province";
 
 /**
  * Flora inicial por provincia.
- * Imágenes en `public/images/plants/` (ruta pública `/images/plants/...`).
- * `image` vacío si aún no hay asset con el mismo nombre base.
+ * Imágenes locales en `public/images/plants/`; respaldo remoto en `plant-images.ts`.
  */
 export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   ProvinceSlug,
@@ -292,7 +291,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   "rio-negro": [
     {
       name: "Neneo",
-      image: "",
+      image: "/images/plants/Neneo austral.webp",
       description:
         "Arbusto típico de la estepa patagónica, resistente al viento y la baja humedad.",
     },

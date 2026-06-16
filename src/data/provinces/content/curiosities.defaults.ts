@@ -1,5 +1,9 @@
 import type { ProvinceContentItem, ProvinceSlug } from "@/types/province";
 
+/**
+ * Hechos históricos por provincia.
+ * Las imágenes remotas (Wikimedia Commons) están en `history-images.ts`.
+ */
 export const DEFAULT_CURIOSITIES_BY_PROVINCE: Record<
   ProvinceSlug,
   ProvinceContentItem[]

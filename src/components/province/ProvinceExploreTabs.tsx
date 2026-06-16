@@ -12,7 +12,7 @@ const TABS: { id: TabId; label: string; emoji: string }[] = [
   { id: "fauna", label: "Fauna", emoji: "🦊" },
   { id: "foods", label: "Comidas", emoji: "🧉" },
   { id: "tourism", label: "Turismo", emoji: "🧭" },
-  { id: "curiosity", label: "Extras", emoji: "✨" },
+  { id: "curiosity", label: "Historia", emoji: "📜" },
 ];
 
 /** En pantallas chicas: fila 3+2 (más ancho para Turismo y Curiosidades) */
@@ -32,10 +32,6 @@ type Props = {
 export function ProvinceExploreTabs({ province, localContent }: Props) {
   const baseId = useId();
   const [active, setActive] = useState<TabId>("flora");
-
-  const curiosityText =
-    province.curiosity ??
-    `¿Sabías que ${province.name} es parte del mapa vivo de Argentina? Seguí explorando para conocer más.`;
 
   const textContent: Record<Extract<TabId, "tourism">, string[]> = {
     tourism: province.tourism,
@@ -87,10 +83,7 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
           tab.id === "foods" ||
           tab.id === "curiosity";
         const textTabId = tab.id as "tourism";
-        const curiosityItems =
-          localContent.curiosities.length > 0
-            ? localContent.curiosities
-            : [{ name: "Dato curioso", image: "", description: curiosityText }];
+        const historyItems = localContent.curiosities;
         return (
           <div
             key={tab.id}
@@ -109,7 +102,7 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
                       ? "flora"
                       : tab.id === "foods"
                         ? "comidas"
-                        : "curiosidades"
+                        : "historia"
                 }
                 items={
                   tab.id === "fauna"
@@ -118,7 +111,7 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
                       ? localContent.plants
                       : tab.id === "foods"
                         ? localContent.foods
-                        : curiosityItems
+                        : historyItems
                 }
               />
             ) : (
