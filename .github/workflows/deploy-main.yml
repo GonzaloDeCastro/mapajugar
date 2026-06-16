@@ -29,23 +29,29 @@ jobs:
           paypal_url: ${{ secrets.PAYPAL_URL }}
         run: npm run build
 
-      - name: Normalize FTP target directory
-        id: ftp-target
+      - name: Prepare FTP target directory
         env:
           FTP_TARGET_DIR_PRD: ${{ secrets.FTP_TARGET_DIR_PRD }}
         run: |
-          DIR="${FTP_TARGET_DIR_PRD%/}/"
-          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          DIR="$(printf '%s' "$FTP_TARGET_DIR_PRD" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's|^/||' | sed 's|/*$||')"
+          if [ -z "$DIR" ]; then
+            echo "::error::FTP_TARGET_DIR_PRD está vacío. Ejemplo: public_html/mapajugar"
+            exit 1
+          fi
+          DIR="$DIR/"
+          echo "FTP_TARGET_DIR=$DIR" >> "$GITHUB_ENV"
+          echo "Deploy target: $DIR"
 
-      # FTP plano (sin SSL) + modo pasivo. FTPS/SFTP suelen hacer timeout desde GitHub Actions.
-      # FTP_SERVER: hostname de hPanel (FTP Accounts) o IP 147.93.37.124 — NO uses ftp.figprojects.com (no existe en DNS).
+      # FTP plano (sin SSL) + modo pasivo.
+      # FTP_SERVER: IP 147.93.37.124 o hostname de hPanel (FTP Accounts).
+      # FTP_TARGET_DIR_PRD: public_html/mapajugar (sin barra inicial)
       - name: Sync files to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ steps.ftp-target.outputs.dir }}
+          server-dir: ${{ env.FTP_TARGET_DIR }}
           local-dir: ./out/
           protocol: ftp
           port: 21
