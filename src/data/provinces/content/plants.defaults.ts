@@ -123,7 +123,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
     },
     {
       name: "Lapacho negro",
-      image: "",
+      image: "/images/plants/Lapacho negro.webp",
       description:
         "Árbol nativo de flores rosadas o violetas que florece espectacularmente a fines del verano.",
     },
@@ -231,7 +231,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   mendoza: [
     {
       name: "Ajarilla",
-      image: "",
+      image: "/images/plants/Ajarilla.webp",
       description:
         "Arbusto nativo de ambientes áridos andinos, adaptado a suelos secos y alta insolación.",
     },
@@ -331,7 +331,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   "san-juan": [
     {
       name: "Retamo",
-      image: "",
+      image: "/images/plants/Retamo.webp",
       description:
         "Arbusto nativo de zonas áridas cuyanas, muy presente en laderas y piedemonte.",
     },
@@ -431,7 +431,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   "tierra-del-fuego": [
     {
       name: "Lenga fueguina",
-      image: "",
+      image: "/images/plants/Lenga fueguina.webp",
       description:
         "Árbol característico de bosques subantárticos del extremo sur argentino.",
     },
@@ -471,7 +471,7 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   "ciudad-autonoma-buenos-aires": [
     {
       name: "Tala ribereño",
-      image: "",
+      image: "/images/plants/Tala ribereño.webp",
       description:
         "Árbol nativo del área pampeana y ribereña, representativo de la vegetación originaria local.",
     },
@@ -491,19 +491,19 @@ export const DEFAULT_PLANTS_BY_PROVINCE: Record<
   "islas-malvinas": [
     {
       name: "Pasto tussac",
-      image: "",
+      image: "/images/plants/Pasto tussac.webp",
       description:
         "Gramínea típica de ambientes costeros subantárticos, clave para refugio de fauna marina.",
     },
     {
       name: "Festuca fueguina",
-      image: "",
+      image: "/images/plants/Festuca fueguina.webp",
       description:
         "Pasto duro de climas fríos y ventosos que tapiza grandes extensiones de llanuras.",
     },
     {
       name: "Matas almohadilladas",
-      image: "",
+      image: "/images/plants/Matas almohadilladas.webp",
       description:
         "Conjunto de pequeñas plantas en cojín adaptadas a suelos pobres, bajas temperaturas y vientos constantes.",
     },

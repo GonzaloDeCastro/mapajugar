@@ -41,7 +41,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Tatú carreta",
-      image: "",
+      image: "/images/animals/tatu-carreta.webp",
       description: "",
     },
   ],
@@ -89,7 +89,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Lobito de río",
-      image: "",
+      image: "/images/animals/lobito-de-rio.webp",
       description: "",
     },
   ],
@@ -101,7 +101,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Oso hormiguero",
-      image: "",
+      image: "/images/animals/oso-hormiguero.webp",
       description: "",
     },
   ],
@@ -252,12 +252,12 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
   "santiago-del-estero": [
     {
       name: "Pecarí de collar",
-      image: "",
+      image: "/images/animals/pecari-de-collar.webp",
       description: "",
     },
     {
       name: "Tatú mulita",
-      image: "",
+      image: "/images/animals/tatu-mulita.webp",
       description: "",
     },
   ],
@@ -269,7 +269,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Cauquén",
-      image: "",
+      image: "/images/animals/cauquen.webp",
       description: "",
     },
   ],
@@ -293,7 +293,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Benteveo",
-      image: "",
+      image: "/images/animals/benteveo.webp",
       description: "",
     },
   ],
@@ -305,7 +305,7 @@ export const DEFAULT_ANIMALS_BY_PROVINCE: Record<
     },
     {
       name: "Albatros de ceja negra",
-      image: "",
+      image: "/images/animals/albatros-ceja-negra.webp",
       description: "",
     },
   ],
