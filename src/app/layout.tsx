@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 
+import { DonationHint } from "@/components/donation/DonationHint";
+import { getDonationConfig } from "@/lib/config/donation";
+
 import "./globals.css";
 
 const nunito = Nunito({
@@ -56,6 +59,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const donation = getDonationConfig();
+
   return (
     <html lang="es-AR" suppressHydrationWarning>
       <body
@@ -63,6 +68,12 @@ export default function RootLayout({
         className={`${nunito.variable} ${fredoka.variable} font-sans antialiased`}
       >
         {children}
+        {donation.enabled ? (
+          <DonationHint
+            paypalUrl={donation.paypalUrl || undefined}
+            qrPath={donation.qrPath}
+          />
+        ) : null}
       </body>
     </html>
   );
