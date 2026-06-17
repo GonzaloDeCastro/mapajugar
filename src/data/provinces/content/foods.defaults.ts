@@ -301,12 +301,6 @@ export const DEFAULT_FOODS_BY_PROVINCE: Record<
       description:
         "Cordero entero o mediano en asador vertical, piel salada y fuego de leña de estepa; ritual en estancias del Alto Valle y la meseta rionegrina.",
     },
-    {
-      name: "Frutas del valle",
-      image: "",
-      description:
-        "Peras (Williams, Packham), manzanas (Red Delicious, Granny Smith) y duraznos del Alto Valle y Valle Medio; consumo fresco, jugos, conservas, sidra y dulce de membrillo artesanal.",
-    },
   ],
   salta: [
     {
@@ -381,12 +375,6 @@ export const DEFAULT_FOODS_BY_PROVINCE: Record<
       description:
         "Cordero patagónico de crías livianas, asado lento con cuero o en parrilla baja; sabor suave por pasturas de la estepa austral y viento frío.",
     },
-    {
-      name: "Centolla patagónica",
-      image: "",
-      description:
-        "Centolla del Atlántico sur cocida en agua con sal, partida y servida con mayonesa, limón o mantequilla clarificada; temporada regulada. Ícono gastronómico de Santa Cruz.",
-    },
   ],
   "santa-fe": [
     {
@@ -429,12 +417,6 @@ export const DEFAULT_FOODS_BY_PROVINCE: Record<
     },
   ],
   "tierra-del-fuego": [
-    {
-      name: "Centolla fueguina",
-      image: "",
-      description:
-        "Centolla del canal Beagle y costas australes; cocida al agua, fría o tibia, con limón y aceite. Temporada corta y precio alto, plato obligado en Ushuaia.",
-    },
     {
       name: "Merluza negra",
       image: "",

@@ -86,8 +86,6 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Cordero al asador":
     "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
-  "Frutas del valle":
-    "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
   "Empanadas salteñas":
     "https://upload.wikimedia.org/wikipedia/commons/3/32/Empanadas_salte%C3%B1as.jpg",
   "Tamales salteños":
@@ -110,8 +108,6 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
     "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Cordero santacruceño":
     "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
-  "Centolla patagónica":
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chile_King_Crab.jpg",
   "Surubí al horno":
     "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Empanada santafesina":
@@ -122,8 +118,6 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   "Rosquete santiagueño":
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
-  "Centolla fueguina":
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chile_King_Crab.jpg",
   "Merluza negra":
     "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Cordero fueguino":
