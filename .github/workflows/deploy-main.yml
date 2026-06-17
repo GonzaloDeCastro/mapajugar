@@ -6,10 +6,14 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   web-deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - name: Get latest code
         uses: actions/checkout@v4
@@ -33,26 +37,79 @@ jobs:
         env:
           FTP_TARGET_DIR_PRD: ${{ secrets.FTP_TARGET_DIR_PRD }}
         run: |
-          DIR="$(printf '%s' "$FTP_TARGET_DIR_PRD" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's|^/||' | sed 's|/*$||')"
+          DIR="$(printf '%s' "$FTP_TARGET_DIR_PRD" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's|^public_html/||' | sed 's|^/||' | sed 's|/*$||')"
           if [ -z "$DIR" ]; then
             echo "::error::FTP_TARGET_DIR_PRD está vacío. Ejemplo: mapajugar"
             exit 1
           fi
           DIR="$DIR/"
           echo "FTP_TARGET_DIR=$DIR" >> "$GITHUB_ENV"
-          echo "Deploy target: $DIR"
+          echo "Deploy target (relativo a public_html/): $DIR"
 
-      # FTP plano (sin SSL) + modo pasivo.
-      # FTP_SERVER: IP 147.93.37.124 o hostname de hPanel (FTP Accounts).
-      # FTP_TARGET_DIR_PRD: solo el subdominio → mapajugar
-      # (la cuenta FTP ya entra en .../files/public_html/; no repitas public_html/)
-      - name: Sync files to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ env.FTP_TARGET_DIR }}
-          local-dir: ./out/
-          protocol: ftp
-          port: 21
+      - name: Diagnose FTP connectivity
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          echo "Runner public IP: $(curl -fsS https://api.ipify.org || echo desconocida)"
+          if [ -z "$FTP_SERVER" ]; then
+            echo "::error::FTP_SERVER está vacío"
+            exit 1
+          fi
+          if printf '%s' "$FTP_SERVER" | grep -qi 'ftp\.figprojects\.com'; then
+            echo "::warning::ftp.figprojects.com suele no resolver desde GitHub Actions. Usá la IP 147.93.37.124 o el hostname de hPanel → FTP Accounts."
+          fi
+          echo "Probando puerto 21 en $FTP_SERVER ..."
+          if timeout 20 bash -c "echo > /dev/tcp/$FTP_SERVER/21"; then
+            echo "Puerto 21 alcanzable."
+          else
+            echo "::warning::No se pudo abrir TCP 21. Hostinger puede bloquear IPs de GitHub; probaremos SFTP en 65002."
+          fi
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy to Hostinger via lftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_TARGET_DIR: ${{ env.FTP_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+
+          deploy_ftp() {
+            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
+              set ftp:ssl-allow no;
+              set ssl:verify-certificate no;
+              set ftp:passive-mode on;
+              set net:connection-limit 1;
+              set net:max-retries 5;
+              set net:timeout 60;
+              lcd ./out;
+              cd $FTP_TARGET_DIR;
+              mirror -R --parallel=1 --verbose --delete . .;
+              quit
+            "
+          }
+
+          deploy_sftp() {
+            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 65002 "$FTP_SERVER" -e "
+              set sftp:connect-program \"ssh -a -x -o StrictHostKeyChecking=accept-new\";
+              set net:connection-limit 1;
+              set net:max-retries 5;
+              set net:timeout 60;
+              lcd ./out;
+              cd $FTP_TARGET_DIR;
+              mirror -R --parallel=1 --verbose --delete . .;
+              quit
+            "
+          }
+
+          if deploy_ftp; then
+            echo "Deploy FTP (21) OK."
+          elif deploy_sftp; then
+            echo "Deploy SFTP (65002) OK."
+          else
+            echo "::error::No se pudo conectar por FTP (21) ni SFTP (65002). Revisá FTP_SERVER (IP 147.93.37.124 o host de hPanel), usuario/contraseña y FTP_TARGET_DIR_PRD=mapajugar"
+            exit 1
+          fi
