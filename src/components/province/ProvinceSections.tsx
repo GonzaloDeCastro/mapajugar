@@ -1,15 +1,13 @@
-import type { Province, ProvinceLocalContent } from "@/types/province";
+import type { ProvinceLocalContent } from "@/types/province";
 
 import { ProvinceExploreTabs } from "./ProvinceExploreTabs";
 
 export function ProvinceSections({
-  province,
   localContent,
 }: {
-  province: Province;
   localContent: ProvinceLocalContent;
 }) {
-  const p = (s: string) => `${province.slug}-${s}`;
+  const p = (s: string) => `${localContent.slug}-${s}`;
 
   return (
     <article className="min-w-0 text-left">
@@ -17,7 +15,7 @@ export function ProvinceSections({
         <span id={p("explore-heading")} className="sr-only">
           Explorar contenido
         </span>
-        <ProvinceExploreTabs province={province} localContent={localContent} />
+        <ProvinceExploreTabs localContent={localContent} />
       </section>
     </article>
   );

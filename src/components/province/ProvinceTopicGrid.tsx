@@ -1,11 +1,15 @@
 import type { ProvinceContentItem } from "@/types/province";
 
+import { TopicImage } from "./TopicImage";
+
+type TopicLabel = "fauna" | "flora" | "comidas" | "historia" | "turismo";
+
 type Props = {
   items: ProvinceContentItem[];
-  topicLabel: "fauna" | "flora" | "comidas" | "historia";
+  topicLabel: TopicLabel;
 };
 
-const EMPTY_COPY: Record<Props["topicLabel"], string> = {
+const EMPTY_COPY: Record<TopicLabel, string> = {
   fauna:
     "Estamos preparando la fauna de esta provincia. Mientras tanto, podés seguir explorando otras secciones.",
   flora:
@@ -14,13 +18,16 @@ const EMPTY_COPY: Record<Props["topicLabel"], string> = {
     "Las comidas típicas de esta provincia se están cargando. Volvé pronto para descubrirlas.",
   historia:
     "Estamos preparando más historia de esta provincia para que sigas aprendiendo.",
+  turismo:
+    "Estamos armando los destinos turísticos de esta provincia. ¡Pronto vas a poder verlos!",
 };
 
-const EMPTY_ICON: Record<Props["topicLabel"], string> = {
+const EMPTY_ICON: Record<TopicLabel, string> = {
   fauna: "🦊",
   flora: "🌿",
   comidas: "🧉",
   historia: "📜",
+  turismo: "🧭",
 };
 
 function hasDisplayableImage(path: string) {
@@ -52,16 +59,11 @@ export function ProvinceTopicGrid({ items, topicLabel }: Props) {
             className="flex h-full min-h-0 min-w-0 flex-col overflow-hidden rounded-2xl border-2 border-heading/15 bg-surface-elevated shadow-[var(--shadow-card)]"
           >
             {hasImage ? (
-              <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-background-warm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
+              <TopicImage
+                src={item.image}
+                alt={item.name}
+                placeholderEmoji={EMPTY_ICON[topicLabel]}
+              />
             ) : (
               <div className="flex aspect-[4/3] w-full shrink-0 items-start justify-start bg-background-warm px-3 pt-3 text-4xl leading-none">
                 {EMPTY_ICON[topicLabel]}
@@ -79,4 +81,3 @@ export function ProvinceTopicGrid({ items, topicLabel }: Props) {
     </ul>
   );
 }
-

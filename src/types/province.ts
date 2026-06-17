@@ -38,6 +38,7 @@ export type ProvinceLocalContent = {
   plants: ProvinceContentItem[];
   foods: ProvinceContentItem[];
   curiosities: ProvinceContentItem[];
+  tourism: ProvinceContentItem[];
 };
 
 export type Province = {

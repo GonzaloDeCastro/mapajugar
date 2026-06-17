@@ -15,17 +15,17 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   Chipá:
     "https://upload.wikimedia.org/wikipedia/commons/9/9e/Chipa_Paraguay.jpg",
   "Pacú a la parrilla":
-    "https://upload.wikimedia.org/wikipedia/commons/3/33/Piaractus_mesopotamicus_-_Flickr_-_Dick_Culbert.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/13/Carbonada.JPG",
   "Mandioca hervida":
-    "https://upload.wikimedia.org/wikipedia/commons/f/f1/Manihot_esculenta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-090.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Locro_de_Argentina.jpg",
   "Cordero patagónico":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
   "Torta galesa":
     "https://upload.wikimedia.org/wikipedia/commons/d/d3/Torta_negra_galesa_%28Y_Wladfa%2C_Argentina%29.JPG",
   "Trucha de río":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cb/Man_holding_a_rainbow_trout_%28Oncorhynchus_mykiss%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fish_and_chips_blackpool.jpg",
   "Cabrito serrano":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Navas_del_Madro%C3%B1o_Plato_de_chanfaina.jpg",
   "Choripán cordobés":
     "https://upload.wikimedia.org/wikipedia/commons/3/3a/Chorip%C3%A1n_argentino_con_papas_fritas.jpg",
   "Alfajor cordobés":
@@ -35,9 +35,9 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Sopa correntina":
     "https://upload.wikimedia.org/wikipedia/commons/5/58/Sopa_Paraguaya_2.jpg",
   "Dorado a la parrilla":
-    "https://upload.wikimedia.org/wikipedia/commons/4/44/Salminus_brasiliensis.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fish_and_chips_blackpool.jpg",
   "Pescados del Paraná y el Uruguay":
-    "https://upload.wikimedia.org/wikipedia/commons/3/39/Spotted_sorubim_%E2%80%9CPseudoplatystoma_corruscans%E2%80%9D_at_MAV-USP.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Empanadas de pescado":
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   "Asado con cuero":
@@ -45,7 +45,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Sopa paraguaya":
     "https://upload.wikimedia.org/wikipedia/commons/5/58/Sopa_Paraguaya_2.jpg",
   "Pacú al horno":
-    "https://upload.wikimedia.org/wikipedia/commons/3/33/Piaractus_mesopotamicus_-_Flickr_-_Dick_Culbert.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/13/Carbonada.JPG",
   "Chipá cuerito":
     "https://upload.wikimedia.org/wikipedia/commons/9/9e/Chipa_Paraguay.jpg",
   "Humita en chala":
@@ -57,7 +57,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Asado criollo pampeano":
     "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
   "Chivito al asador":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Navas_del_Madro%C3%B1o_Plato_de_chanfaina.jpg",
   "Torta frita":
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Chanfaina riojana":
@@ -69,7 +69,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Tortitas mendocinas":
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Chivo a la llama":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Navas_del_Madro%C3%B1o_Plato_de_chanfaina.jpg",
   "Empanadas mendocinas":
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   Reviro:
@@ -79,13 +79,13 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   Mbejú:
     "https://upload.wikimedia.org/wikipedia/commons/9/9e/Chipa_Paraguay.jpg",
   "Chivito neuquino":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Navas_del_Madro%C3%B1o_Plato_de_chanfaina.jpg",
   "Trucha patagónica":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cb/Man_holding_a_rainbow_trout_%28Oncorhynchus_mykiss%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fish_and_chips_blackpool.jpg",
   "Torta frita patagónica":
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/TortaFrita.jpg",
   "Cordero al asador":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
   "Frutas del valle":
     "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
   "Empanadas salteñas":
@@ -101,7 +101,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   Sopaipillas:
     "https://upload.wikimedia.org/wikipedia/commons/e/e1/Sopaipilla.jpg",
   "Chivito puntano":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/El_Para%C3%ADso_de_los_Animales_%2C_Cabrito_Honorio_por_Pablo_Blitto_Torre.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Navas_del_Madro%C3%B1o_Plato_de_chanfaina.jpg",
   "Empanadas puntanas":
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   Carbonada:
@@ -109,11 +109,11 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Cazuela de mariscos":
     "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Cordero santacruceño":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
   "Centolla patagónica":
     "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chile_King_Crab.jpg",
   "Surubí al horno":
-    "https://upload.wikimedia.org/wikipedia/commons/3/39/Spotted_sorubim_%E2%80%9CPseudoplatystoma_corruscans%E2%80%9D_at_MAV-USP.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Empanada santafesina":
     "https://upload.wikimedia.org/wikipedia/commons/2/2e/Empanada%2C_flaky_pastry_perfection.jpg",
   "Locro santiagueño":
@@ -125,9 +125,9 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Centolla fueguina":
     "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chile_King_Crab.jpg",
   "Merluza negra":
-    "https://upload.wikimedia.org/wikipedia/commons/a/a8/Toothfish.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Seafood_stew.jpg",
   "Cordero fueguino":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
   "Sánguche de milanesa":
     "https://upload.wikimedia.org/wikipedia/commons/2/24/Milanesa_napolitana_argentina.jpg",
   "Empanadas tucumanas":
@@ -143,7 +143,7 @@ export const FOOD_IMAGE_URLS: Record<string, string> = {
   "Pescado frito con papas":
     "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fish_and_chips_blackpool.jpg",
   "Merluza y mariscos locales":
-    "https://upload.wikimedia.org/wikipedia/commons/a/a8/Toothfish.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a3/Cazuela_de_mariscos.jpg",
   "Cordero isleño":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c5/Brebis_agneau.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/65/Asado_2005.jpg",
 };

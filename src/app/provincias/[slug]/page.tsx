@@ -69,7 +69,7 @@ export default async function ProvincePage({ params }: Props) {
           </ol>
         </nav>
         <div className="flex min-w-0 flex-col-reverse gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,40%)] lg:items-start">
-          <ProvinceSections province={province} localContent={localContent} />
+          <ProvinceSections localContent={localContent} />
           <ProvinceSpotlightMap
             slug={province.slug}
             name={province.name}

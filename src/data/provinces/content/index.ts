@@ -16,6 +16,8 @@ import { FOOD_IMAGE_URLS } from "./food-images";
 import { HISTORY_IMAGE_URLS } from "./history-images";
 import { PLANT_IMAGE_URLS } from "./plant-images";
 import { DEFAULT_PLANTS_BY_PROVINCE } from "./plants.defaults";
+import { TOURISM_IMAGE_URLS } from "./tourism-images";
+import { DEFAULT_TOURISM_BY_PROVINCE } from "./tourism.defaults";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "data", "provinces", "content");
 
@@ -69,6 +71,10 @@ function emptyContent(slug: ProvinceSlug): ProvinceLocalContent {
       DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [],
       HISTORY_IMAGE_URLS,
     ),
+    tourism: mapItems(
+      DEFAULT_TOURISM_BY_PROVINCE[slug] ?? [],
+      TOURISM_IMAGE_URLS,
+    ),
   };
 }
 
@@ -109,6 +115,7 @@ function normalizeContent(
   const plants = arr(r.plants) as ProvinceContentItem[];
   const foods = arr(r.foods) as ProvinceContentItem[];
   const curiosities = arr(r.curiosities) as ProvinceContentItem[];
+  const tourism = arr(r.tourism) as ProvinceContentItem[];
   return {
     slug,
     name: typeof r.name === "string" ? r.name : slug,
@@ -128,6 +135,10 @@ function normalizeContent(
     curiosities: mapItems(
       mergeItems(DEFAULT_CURIOSITIES_BY_PROVINCE[slug] ?? [], curiosities),
       HISTORY_IMAGE_URLS,
+    ),
+    tourism: mapItems(
+      mergeItems(DEFAULT_TOURISM_BY_PROVINCE[slug] ?? [], tourism),
+      TOURISM_IMAGE_URLS,
     ),
   } as ProvinceLocalContent;
 }

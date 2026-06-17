@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 
-import type { Province, ProvinceLocalContent } from "@/types/province";
+import type { ProvinceLocalContent } from "@/types/province";
 import { ProvinceTopicGrid } from "./ProvinceTopicGrid";
 
 type TabId = "flora" | "fauna" | "foods" | "tourism" | "curiosity";
@@ -25,17 +25,12 @@ const TAB_MOBILE_COL_SPAN = [
 ] as const;
 
 type Props = {
-  province: Province;
   localContent: ProvinceLocalContent;
 };
 
-export function ProvinceExploreTabs({ province, localContent }: Props) {
+export function ProvinceExploreTabs({ localContent }: Props) {
   const baseId = useId();
   const [active, setActive] = useState<TabId>("flora");
-
-  const textContent: Record<Extract<TabId, "tourism">, string[]> = {
-    tourism: province.tourism,
-  };
 
   return (
     <div className="space-y-4 text-left">
@@ -77,13 +72,28 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
       </div>
 
       {TABS.map((tab) => {
-        const isDataTab =
-          tab.id === "fauna" ||
-          tab.id === "flora" ||
-          tab.id === "foods" ||
-          tab.id === "curiosity";
-        const textTabId = tab.id as "tourism";
-        const historyItems = localContent.curiosities;
+        const topicLabel =
+          tab.id === "fauna"
+            ? "fauna"
+            : tab.id === "flora"
+              ? "flora"
+              : tab.id === "foods"
+                ? "comidas"
+                : tab.id === "tourism"
+                  ? "turismo"
+                  : "historia";
+
+        const items =
+          tab.id === "fauna"
+            ? localContent.animals
+            : tab.id === "flora"
+              ? localContent.plants
+              : tab.id === "foods"
+                ? localContent.foods
+                : tab.id === "tourism"
+                  ? localContent.tourism
+                  : localContent.curiosities;
+
         return (
           <div
             key={tab.id}
@@ -93,39 +103,7 @@ export function ProvinceExploreTabs({ province, localContent }: Props) {
             hidden={active !== tab.id}
             className="w-full min-w-0 rounded-2xl border-2 border-sun/35 bg-background-warm/80 p-4 text-left shadow-[var(--shadow-card)] sm:p-5"
           >
-            {isDataTab ? (
-              <ProvinceTopicGrid
-                topicLabel={
-                  tab.id === "fauna"
-                    ? "fauna"
-                    : tab.id === "flora"
-                      ? "flora"
-                      : tab.id === "foods"
-                        ? "comidas"
-                        : "historia"
-                }
-                items={
-                  tab.id === "fauna"
-                    ? localContent.animals
-                    : tab.id === "flora"
-                      ? localContent.plants
-                      : tab.id === "foods"
-                        ? localContent.foods
-                        : historyItems
-                }
-              />
-            ) : (
-              <ul className="space-y-3">
-                {textContent[textTabId].map((place) => (
-                  <li
-                    key={place}
-                    className="rounded-xl border border-heading/15 bg-surface px-3 py-2 text-base font-semibold leading-relaxed text-foreground sm:text-[17px]"
-                  >
-                    🧭 {place}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <ProvinceTopicGrid items={items} topicLabel={topicLabel} />
           </div>
         );
       })}
