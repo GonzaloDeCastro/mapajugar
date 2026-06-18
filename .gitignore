@@ -34,6 +34,10 @@ yarn-error.log*
 .env*
 !.env.example
 
+# per-fork country config (copy from fork.config.example.json)
+fork.config.json
+scripts/map-id-to-slug.json
+
 # vercel
 .vercel
 

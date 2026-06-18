@@ -1,0 +1,22 @@
+---
+description: Bootstrap a new country map fork when fork.config.json or map SVG under public/inputs/assets is present
+globs:
+  - fork.config.json
+  - fork.config.example.json
+  - public/inputs/assets/**
+  - scripts/map-id-to-slug.json
+  - scripts/map-id-to-slug.example.json
+alwaysApply: false
+---
+
+# Map fork mode
+
+If `fork.config.json` exists or the user is adding a map under `public/inputs/assets/`:
+
+1. **Read** `.cursor/skills/map-fork-bootstrap/SKILL.md` and follow it end-to-end.
+2. **Language:** all UI and content in the language set in `fork.config.json` — never leave Argentina Spanish unless `language` is `es-AR`.
+3. **Donations:** keep existing PayPal + QR; use `PAYPAL_URL` GitHub Secret only; never commit `.env` or hardcode PayPal URLs.
+4. **Images:** web URLs only for flora, fauna, food, tourism, history; omit items without valid images.
+5. **Deploy:** GitHub Pages only; ignore `deploy-main.yml`.
+
+User should only supply SVG + config. Do not ask for a long custom prompt.

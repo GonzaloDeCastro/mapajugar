@@ -1,0 +1,6 @@
+{
+  "_comment": "Copy to scripts/map-id-to-slug.json after inspecting SVG <path id=\"...\">. Keys = SVG id, values = URL slug.",
+  "US-CA": "california",
+  "US-TX": "texas",
+  "US-NY": "new-york"
+}

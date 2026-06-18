@@ -1,0 +1,31 @@
+{
+  "$schema": "./fork.config.schema.json",
+  "projectName": "My Country Map",
+  "country": "United States",
+  "countryCode": "US",
+  "language": "en-US",
+  "languageName": "US English",
+  "jurisdiction": {
+    "singular": "state",
+    "plural": "states",
+    "routeSegment": "states",
+    "uiLabel": "States"
+  },
+  "map": {
+    "svgInput": "public/inputs/assets/map.svg",
+    "svgDest": "src/data/map/country.svg",
+    "idToSlugFile": "scripts/map-id-to-slug.json"
+  },
+  "content": {
+    "itemsPerCategory": 3
+  },
+  "donations": {
+    "keepComponent": true,
+    "qrPath": "public/inputs/payments/QR_CODE.png",
+    "paypalSecretName": "PAYPAL_URL"
+  },
+  "deploy": {
+    "githubPagesOnly": true,
+    "ignoreWorkflows": ["deploy-main.yml"]
+  }
+}

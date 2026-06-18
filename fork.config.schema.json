@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Map fork configuration",
+  "type": "object",
+  "required": ["country", "language", "jurisdiction", "map"],
+  "properties": {
+    "projectName": { "type": "string" },
+    "country": { "type": "string" },
+    "countryCode": { "type": "string", "minLength": 2, "maxLength": 3 },
+    "language": { "type": "string", "description": "BCP 47 tag, e.g. en-US, es-AR, pt-BR" },
+    "languageName": { "type": "string" },
+    "jurisdiction": {
+      "type": "object",
+      "required": ["singular", "plural", "routeSegment"],
+      "properties": {
+        "singular": { "type": "string" },
+        "plural": { "type": "string" },
+        "routeSegment": { "type": "string" },
+        "uiLabel": { "type": "string" }
+      }
+    },
+    "map": {
+      "type": "object",
+      "required": ["svgInput", "svgDest", "idToSlugFile"],
+      "properties": {
+        "svgInput": { "type": "string" },
+        "svgDest": { "type": "string" },
+        "idToSlugFile": { "type": "string" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "itemsPerCategory": { "type": "integer", "minimum": 1, "maximum": 5, "default": 3 }
+      }
+    },
+    "donations": {
+      "type": "object",
+      "properties": {
+        "keepComponent": { "type": "boolean", "default": true },
+        "qrPath": { "type": "string" },
+        "paypalSecretName": { "type": "string", "default": "PAYPAL_URL" }
+      }
+    },
+    "deploy": {
+      "type": "object",
+      "properties": {
+        "githubPagesOnly": { "type": "boolean", "default": true },
+        "ignoreWorkflows": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

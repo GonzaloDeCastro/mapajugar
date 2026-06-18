@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Fork: otro país / mapa
+
+Este repo es plantilla para mapas educativos por país. Para un fork nuevo:
+
+1. `cp fork.config.example.json fork.config.json` y completá país + idioma.
+2. Subí el SVG a `public/inputs/assets/map.svg`.
+3. En Cursor: **「Bootstrap map fork using fork.config.json」**
+
+Guía completa: [docs/FORK_WORKFLOW.md](docs/FORK_WORKFLOW.md)
