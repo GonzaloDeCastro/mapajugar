@@ -7,6 +7,7 @@
     "generate:map-paths": "node scripts/extract-map-paths.mjs",
     "generate:malvinas-path": "node scripts/extract-malvinas-path.mjs",
     "generate:trivia": "node scripts/generate-trivia-questions.mjs",
+    "generate:tourism-images": "node scripts/write-tourism-images.mjs",
     "build": "node scripts/extract-map-paths.mjs && node scripts/extract-malvinas-path.mjs && node scripts/generate-trivia-questions.mjs && next build --turbopack",
     "start": "next start",
     "lint": "eslint"

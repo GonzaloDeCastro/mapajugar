@@ -1,5 +1,11 @@
-/** Imágenes de destinos turísticos (Wikimedia Commons, uso educativo). */
-export const TOURISM_IMAGE_URLS: Record<string, string> = {
+/**
+ * Escribe tourism-images.ts con URLs curadas de Wikimedia Commons.
+ * Uso: node scripts/write-tourism-images.mjs
+ */
+
+import { readFileSync, writeFileSync } from "node:fs";
+
+const TOURISM_IMAGES = {
   "Mar del Plata y Costa Atlántica":
     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mar_del_Plata_-_panoramio.jpg/640px-Mar_del_Plata_-_panoramio.jpg",
   "Sierra de la Ventana (Parque Provincial Ernesto Tornquist)":
@@ -151,3 +157,20 @@ export const TOURISM_IMAGE_URLS: Record<string, string> = {
   "Voluntario Hill / Monte Longdon (sitios históricos)":
     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Batalla_de_la_Vuelta_de_Obligado.jpg/640px-Batalla_de_la_Vuelta_de_Obligado.jpg",
 };
+
+const defaults = readFileSync("src/data/provinces/content/tourism.defaults.ts", "utf8");
+const names = [...defaults.matchAll(/name: "([^"]+)"/g)].map((m) => m[1]);
+const missing = names.filter((n) => !TOURISM_IMAGES[n]);
+if (missing.length) {
+  console.warn("Missing images for:", missing);
+}
+
+let out = "/** Imágenes de destinos turísticos (Wikimedia Commons, uso educativo). */\n";
+out += "export const TOURISM_IMAGE_URLS: Record<string, string> = {\n";
+for (const [name, url] of Object.entries(TOURISM_IMAGES)) {
+  out += `  ${JSON.stringify(name)}:\n    ${JSON.stringify(url)},\n`;
+}
+out += "};\n";
+
+writeFileSync("src/data/provinces/content/tourism-images.ts", out);
+console.log("OK: tourism-images.ts", Object.keys(TOURISM_IMAGES).length, "entries");
