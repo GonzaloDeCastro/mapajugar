@@ -34,6 +34,16 @@ export function MapExplorerFrame({
           Mapa grande
         </Link>
       ) : null}
+      <Link
+        href="/trivia"
+        className={`inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform,box-shadow,border-color] hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] ${
+          variant === "fullPage"
+            ? "border-celeste/60 bg-surface-elevated text-heading hover:border-water"
+            : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60"
+        }`}
+      >
+        Trivia
+      </Link>
       {supported ? (
         <button
           type="button"

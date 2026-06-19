@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Hornero">
+  <circle cx="100" cy="100" r="95" fill="#fff8e7" stroke="#f9a825" stroke-width="6"/>
+  <ellipse cx="100" cy="115" rx="45" ry="35" fill="#c45c26"/>
+  <circle cx="100" cy="75" r="28" fill="#c45c26"/>
+  <circle cx="88" cy="70" r="5" fill="#1a2e3b"/>
+  <circle cx="112" cy="70" r="5" fill="#1a2e3b"/>
+  <path d="M125 78 L155 70 L125 88 Z" fill="#e67e22"/>
+  <ellipse cx="75" cy="130" rx="18" ry="8" fill="#e67e22" opacity=".8"/>
+  <ellipse cx="125" cy="130" rx="18" ry="8" fill="#e67e22" opacity=".8"/>
+</svg>

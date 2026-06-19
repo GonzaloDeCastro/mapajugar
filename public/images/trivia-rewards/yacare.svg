@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Yacaré">
+  <circle cx="100" cy="100" r="95" fill="#fff8e7" stroke="#f9a825" stroke-width="6"/>
+  <ellipse cx="115" cy="115" rx="65" ry="28" fill="#2e7d57"/>
+  <ellipse cx="55" cy="105" rx="28" ry="22" fill="#2e7d57"/>
+  <circle cx="42" cy="98" r="6" fill="#1a2e3b"/>
+  <path d="M30 100 L12 95 L30 108 Z" fill="#2e7d57"/>
+  <path d="M90 95 L170 90 L90 125 Z" fill="#1b5e40"/>
+  <circle cx="75" cy="108" r="4" fill="#4caf50" opacity=".5"/>
+  <circle cx="110" cy="112" r="4" fill="#4caf50" opacity=".5"/>
+</svg>

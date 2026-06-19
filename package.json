@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "generate:map-paths": "node scripts/extract-map-paths.mjs",
     "generate:malvinas-path": "node scripts/extract-malvinas-path.mjs",
-    "build": "node scripts/extract-map-paths.mjs && node scripts/extract-malvinas-path.mjs && next build --turbopack",
+    "generate:trivia": "node scripts/generate-trivia-questions.mjs",
+    "build": "node scripts/extract-map-paths.mjs && node scripts/extract-malvinas-path.mjs && node scripts/generate-trivia-questions.mjs && next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },
