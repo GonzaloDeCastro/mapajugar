@@ -1,6 +1,9 @@
-/** Base path público del deploy (ej. `/mapajugar`). Vacío en local sin `BASE_PATH`. */
+/** Base path público del deploy (ej. `/mapajugar`). Vacío en local sin base path. */
 export function getBasePath(): string {
-  let raw = process.env.BASE_PATH?.trim().replace(/\/$/, "") ?? "";
+  let raw =
+    process.env.NEXT_PUBLIC_BASE_PATH?.trim().replace(/\/$/, "") ??
+    process.env.BASE_PATH?.trim().replace(/\/$/, "") ??
+    "";
   if (raw.startsWith("/")) raw = raw.slice(1);
   return raw && raw !== "." ? `/${raw}` : "";
 }
