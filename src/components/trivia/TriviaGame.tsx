@@ -148,7 +148,6 @@ export function TriviaGame() {
         <TriviaWinner
           winners={winners[0].players}
           shared={winners[0].shared}
-          provincesInGame={state.provincesInGame}
           onPlayAgain={() => dispatch({ type: "RESET" })}
         />
       ) : null}

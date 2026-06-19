@@ -2,29 +2,24 @@
 
 import { useState } from "react";
 
-import { pickRewardForProvinces } from "@/data/trivia/reward-manifest";
+import { pickRandomTriviaPrize } from "@/data/trivia/reward-manifest";
 import { downloadTriviaCertificate } from "@/lib/trivia/download-certificate";
 import { withBasePath } from "@/lib/routing/base-path";
 import type { TriviaPlayer } from "@/lib/trivia/types";
-import type { ProvinceSlug } from "@/types/province";
 
 type Props = {
   winners: TriviaPlayer[];
   shared: boolean;
-  provincesInGame: ProvinceSlug[];
   onPlayAgain: () => void;
 };
 
 export function TriviaWinner({
   winners,
   shared,
-  provincesInGame,
   onPlayAgain,
 }: Props) {
   const [downloading, setDownloading] = useState(false);
-  const reward = pickRewardForProvinces(
-    provincesInGame.length ? provincesInGame : ["buenos-aires"],
-  );
+  const [reward] = useState(() => pickRandomTriviaPrize());
 
   const handleDownload = async (player: TriviaPlayer) => {
     setDownloading(true);
@@ -51,7 +46,7 @@ export function TriviaWinner({
         ))}
       </ul>
       <p className="text-sm font-medium text-foreground-muted">
-        Ficha de fauna: {reward.label}. Descargá tu certificado con la ilustración.
+        Premio: {reward.label}. Descargá tu certificado con la ilustración.
       </p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
