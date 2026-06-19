@@ -5,11 +5,36 @@
 import { writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 
-import { DEFAULT_ANIMALS_BY_PROVINCE } from "../src/data/provinces/content/animals.defaults.ts";
-import { DEFAULT_PLANTS_BY_PROVINCE } from "../src/data/provinces/content/plants.defaults.ts";
-import { DEFAULT_FOODS_BY_PROVINCE } from "../src/data/provinces/content/foods.defaults.ts";
-import { DEFAULT_TOURISM_BY_PROVINCE } from "../src/data/provinces/content/tourism.defaults.ts";
-import { DEFAULT_CURIOSITIES_BY_PROVINCE } from "../src/data/provinces/content/curiosities.defaults.ts";
+import { loadTsNamedExport } from "./lib/load-ts-export.mjs";
+
+const [
+  DEFAULT_ANIMALS_BY_PROVINCE,
+  DEFAULT_PLANTS_BY_PROVINCE,
+  DEFAULT_FOODS_BY_PROVINCE,
+  DEFAULT_TOURISM_BY_PROVINCE,
+  DEFAULT_CURIOSITIES_BY_PROVINCE,
+] = await Promise.all([
+  loadTsNamedExport(
+    "src/data/provinces/content/animals.defaults.ts",
+    "DEFAULT_ANIMALS_BY_PROVINCE",
+  ),
+  loadTsNamedExport(
+    "src/data/provinces/content/plants.defaults.ts",
+    "DEFAULT_PLANTS_BY_PROVINCE",
+  ),
+  loadTsNamedExport(
+    "src/data/provinces/content/foods.defaults.ts",
+    "DEFAULT_FOODS_BY_PROVINCE",
+  ),
+  loadTsNamedExport(
+    "src/data/provinces/content/tourism.defaults.ts",
+    "DEFAULT_TOURISM_BY_PROVINCE",
+  ),
+  loadTsNamedExport(
+    "src/data/provinces/content/curiosities.defaults.ts",
+    "DEFAULT_CURIOSITIES_BY_PROVINCE",
+  ),
+]);
 
 const PROVINCE_NAMES = {
   "buenos-aires": "Buenos Aires",
