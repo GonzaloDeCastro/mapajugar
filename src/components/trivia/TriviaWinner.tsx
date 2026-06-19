@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { pickRewardForProvinces } from "@/data/trivia/reward-manifest";
 import { downloadTriviaCertificate } from "@/lib/trivia/download-certificate";
+import { withBasePath } from "@/lib/routing/base-path";
 import type { TriviaPlayer } from "@/lib/trivia/types";
 import type { ProvinceSlug } from "@/types/province";
 
@@ -50,8 +51,15 @@ export function TriviaWinner({
         ))}
       </ul>
       <p className="text-sm font-medium text-foreground-muted">
-        Premio: {reward.label}. Descargá tu certificado con el dibujo.
+        Ficha de fauna: {reward.label}. Descargá tu certificado con la ilustración.
       </p>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={withBasePath(reward.imagePath)}
+        alt={reward.speciesName}
+        className="mx-auto h-40 w-auto object-contain"
+        style={{ imageRendering: "pixelated" }}
+      />
       <div className="flex flex-col gap-3">
         {winners.map((w) => (
           <button
@@ -61,7 +69,7 @@ export function TriviaWinner({
             onClick={() => void handleDownload(w)}
             className="min-h-12 rounded-2xl bg-water px-4 text-sm font-extrabold text-white shadow-[var(--shadow-card)] hover:brightness-110 disabled:opacity-60"
           >
-            Descargar premio de {w.name}
+            Descargar ficha de {w.name}
           </button>
         ))}
         <button

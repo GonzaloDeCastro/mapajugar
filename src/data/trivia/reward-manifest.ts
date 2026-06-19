@@ -3,136 +3,154 @@ import type { ProvinceSlug } from "@/types/province";
 export type TriviaReward = {
   speciesName: string;
   label: string;
-  svgPath: string;
+  imagePath: string;
 };
 
-/** Premio descargable: ilustración SVG por provincia (estilo sticker). */
-export const TRIVIA_REWARDS: Record<ProvinceSlug, TriviaReward> = {
-  "buenos-aires": {
+const AWARENESS_ANIMALS = {
+  hornero: {
     speciesName: "Hornero",
-    label: "El hornero de Buenos Aires",
-    svgPath: "/images/trivia-rewards/hornero.svg",
+    label: "El hornero, ave nacional",
+    imagePath: "/images/awareness/animals/hornero.png",
   },
-  catamarca: {
-    speciesName: "Vicuña",
-    label: "La vicuña de Catamarca",
-    svgPath: "/images/trivia-rewards/vicuna.svg",
-  },
-  chaco: {
-    speciesName: "Yaguareté",
-    label: "El yaguareté del Chaco",
-    svgPath: "/images/trivia-rewards/yaguarete.svg",
-  },
-  chubut: {
-    speciesName: "Huemul",
-    label: "El huemul de Chubut",
-    svgPath: "/images/trivia-rewards/huemul.svg",
-  },
-  cordoba: {
-    speciesName: "Carpincho",
-    label: "El carpincho de Córdoba",
-    svgPath: "/images/trivia-rewards/carpincho.svg",
-  },
-  corrientes: {
-    speciesName: "Yacaré",
-    label: "El yacaré de Corrientes",
-    svgPath: "/images/trivia-rewards/yacare.svg",
-  },
-  "entre-rios": {
-    speciesName: "Ceibo",
-    label: "El ceibo de Entre Ríos",
-    svgPath: "/images/trivia-rewards/ceibo.svg",
-  },
-  formosa: {
-    speciesName: "Tatú carreta",
-    label: "El tatú de Formosa",
-    svgPath: "/images/trivia-rewards/tatu.svg",
-  },
-  jujuy: {
-    speciesName: "Llama",
-    label: "La llama de Jujuy",
-    svgPath: "/images/trivia-rewards/llama.svg",
-  },
-  "la-pampa": {
-    speciesName: "Caldén",
-    label: "El caldén de La Pampa",
-    svgPath: "/images/trivia-rewards/calden.svg",
-  },
-  "la-rioja": {
+  guanaco: {
     speciesName: "Guanaco",
-    label: "El guanaco de La Rioja",
-    svgPath: "/images/trivia-rewards/guanaco.svg",
+    label: "El guanaco andino",
+    imagePath: "/images/awareness/animals/guanaco.png",
   },
-  mendoza: {
-    speciesName: "Cóndor",
-    label: "El cóndor de Mendoza",
-    svgPath: "/images/trivia-rewards/condor.svg",
+  vizcacha: {
+    speciesName: "Vizcacha",
+    label: "La vizcacha de montaña",
+    imagePath: "/images/awareness/animals/vizcacha.png",
   },
-  misiones: {
-    speciesName: "Tucán",
-    label: "El tucán de Misiones",
-    svgPath: "/images/trivia-rewards/tucan.svg",
+  yaguarete: {
+    speciesName: "Yaguareté",
+    label: "El yaguareté",
+    imagePath: "/images/awareness/animals/yaguarete.png",
   },
-  neuquen: {
-    speciesName: "Araucaria",
-    label: "La araucaria de Neuquén",
-    svgPath: "/images/trivia-rewards/araucaria.svg",
+  pinguino: {
+    speciesName: "Pingüino de Magallanes",
+    label: "El pingüino de Magallanes",
+    imagePath: "/images/awareness/animals/pinguino-magallanes.png",
   },
-  "rio-negro": {
-    speciesName: "Trucha",
-    label: "La trucha de Río Negro",
-    svgPath: "/images/trivia-rewards/trucha.svg",
+  carpincho: {
+    speciesName: "Carpincho",
+    label: "El carpincho",
+    imagePath: "/images/awareness/animals/carpincho.png",
   },
-  salta: {
-    speciesName: "Cardón",
-    label: "El cardón de Salta",
-    svgPath: "/images/trivia-rewards/cardon.svg",
+  yarara: {
+    speciesName: "Yarará",
+    label: "La yarará",
+    imagePath: "/images/awareness/animals/yarara.png",
   },
-  "san-juan": {
-    speciesName: "Zorro gris",
-    label: "El zorro de San Juan",
-    svgPath: "/images/trivia-rewards/zorro.svg",
+  flamenco: {
+    speciesName: "Flamenco austral",
+    label: "El flamenco austral",
+    imagePath: "/images/awareness/animals/flamenco-austral.png",
   },
-  "san-luis": {
+  tatu: {
+    speciesName: "Tatú carreta",
+    label: "El tatú carreta",
+    imagePath: "/images/awareness/animals/tatu-carreta.png",
+  },
+  nandu: {
+    speciesName: "Ñandú",
+    label: "El ñandú pampeano",
+    imagePath: "/images/awareness/animals/nandu.png",
+  },
+  condor: {
+    speciesName: "Cóndor andino",
+    label: "El cóndor andino",
+    imagePath: "/images/awareness/animals/condor-andino.png",
+  },
+  tucan: {
+    speciesName: "Tucán grande",
+    label: "El tucán grande",
+    imagePath: "/images/awareness/animals/tucan-grande.png",
+  },
+  zorrino: {
+    speciesName: "Zorrino",
+    label: "El zorrino",
+    imagePath: "/images/awareness/animals/zorrino.png",
+  },
+  pejerrey: {
+    speciesName: "Pejerrey",
+    label: "El pejerrey",
+    imagePath: "/images/awareness/animals/pejerrey.png",
+  },
+  zorro: {
+    speciesName: "Zorro pampeano",
+    label: "El zorro pampeano",
+    imagePath: "/images/awareness/animals/zorro-pampeano.png",
+  },
+  mara: {
     speciesName: "Mara",
-    label: "La mara de San Luis",
-    svgPath: "/images/trivia-rewards/mara.svg",
+    label: "La mara patagónica",
+    imagePath: "/images/awareness/animals/mara.png",
   },
-  "santa-cruz": {
-    speciesName: "Pingüino",
-    label: "El pingüino de Santa Cruz",
-    svgPath: "/images/trivia-rewards/pinguino.svg",
+  lechucita: {
+    speciesName: "Lechucita vizcachera",
+    label: "La lechucita vizcachera",
+    imagePath: "/images/awareness/animals/lechucita-vizcachera.png",
   },
-  "santa-fe": {
-    speciesName: "Dorado",
-    label: "El dorado de Santa Fe",
-    svgPath: "/images/trivia-rewards/dorado.svg",
+  margay: {
+    speciesName: "Margay",
+    label: "El margay",
+    imagePath: "/images/awareness/animals/margay.png",
   },
-  "santiago-del-estero": {
-    speciesName: "Chañar",
-    label: "El chañar santiagueño",
-    svgPath: "/images/trivia-rewards/chanar.svg",
+  comadreja: {
+    speciesName: "Comadreja overa",
+    label: "La comadreja overa",
+    imagePath: "/images/awareness/animals/comadreja-overa.png",
   },
-  "tierra-del-fuego": {
-    speciesName: "Canelo",
-    label: "El canelo fueguino",
-    svgPath: "/images/trivia-rewards/canelo.svg",
+  paloma: {
+    speciesName: "Paloma araucana",
+    label: "La paloma araucana",
+    imagePath: "/images/awareness/animals/paloma-araucana.png",
   },
-  tucuman: {
-    speciesName: "Monito del monte",
-    label: "El monito del monte",
-    svgPath: "/images/trivia-rewards/monito.svg",
+  delfin: {
+    speciesName: "Delfín franciscana",
+    label: "El delfín franciscana",
+    imagePath: "/images/awareness/animals/delfin-franciscana.png",
   },
-  "ciudad-autonoma-buenos-aires": {
-    speciesName: "Paloma",
-    label: "La paloma porteña",
-    svgPath: "/images/trivia-rewards/paloma.svg",
+  coati: {
+    speciesName: "Coatí",
+    label: "El coatí",
+    imagePath: "/images/awareness/animals/coati.png",
   },
-  "islas-malvinas": {
-    speciesName: "Pingüino",
-    label: "El pingüino de Malvinas",
-    svgPath: "/images/trivia-rewards/pinguino.svg",
+  rana: {
+    speciesName: "Rana criolla",
+    label: "La rana criolla",
+    imagePath: "/images/awareness/animals/rana-criolla.png",
   },
+} as const satisfies Record<string, TriviaReward>;
+
+/** Premio descargable: ficha de fauna por provincia jugada. */
+export const TRIVIA_REWARDS: Record<ProvinceSlug, TriviaReward> = {
+  "buenos-aires": AWARENESS_ANIMALS.hornero,
+  catamarca: AWARENESS_ANIMALS.guanaco,
+  chaco: AWARENESS_ANIMALS.yaguarete,
+  chubut: AWARENESS_ANIMALS.pinguino,
+  cordoba: AWARENESS_ANIMALS.carpincho,
+  corrientes: AWARENESS_ANIMALS.yarara,
+  "entre-rios": AWARENESS_ANIMALS.flamenco,
+  formosa: AWARENESS_ANIMALS.tatu,
+  jujuy: AWARENESS_ANIMALS.vizcacha,
+  "la-pampa": AWARENESS_ANIMALS.nandu,
+  "la-rioja": AWARENESS_ANIMALS.guanaco,
+  mendoza: AWARENESS_ANIMALS.condor,
+  misiones: AWARENESS_ANIMALS.tucan,
+  neuquen: AWARENESS_ANIMALS.zorrino,
+  "rio-negro": AWARENESS_ANIMALS.pejerrey,
+  salta: AWARENESS_ANIMALS.vizcacha,
+  "san-juan": AWARENESS_ANIMALS.zorro,
+  "san-luis": AWARENESS_ANIMALS.mara,
+  "santa-cruz": AWARENESS_ANIMALS.pinguino,
+  "santa-fe": AWARENESS_ANIMALS.pejerrey,
+  "santiago-del-estero": AWARENESS_ANIMALS.lechucita,
+  "tierra-del-fuego": AWARENESS_ANIMALS.pinguino,
+  tucuman: AWARENESS_ANIMALS.margay,
+  "ciudad-autonoma-buenos-aires": AWARENESS_ANIMALS.paloma,
+  "islas-malvinas": AWARENESS_ANIMALS.pinguino,
 };
 
 export function pickRewardForProvinces(provinces: ProvinceSlug[]): TriviaReward {

@@ -44,7 +44,7 @@ export async function downloadTriviaCertificate(
   ctx.fillText(`${player.score} punto${player.score === 1 ? "" : "s"} en Mapa Jugar`, width / 2, 220);
 
   try {
-    const img = await loadImage(withBasePath(reward.svgPath));
+    const img = await loadImage(withBasePath(reward.imagePath));
     const max = 420;
     const scale = Math.min(max / img.width, max / img.height);
     const w = img.width * scale;
