@@ -10,6 +10,7 @@ import {
   fetchProvinceLocalContentBySlug,
 } from "@/services/province-service";
 import Link from "next/link";
+import { provincePath } from "@/lib/routing/paths";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!province) {
     return { title: "Provincia no encontrada" };
   }
-  const url = `/provincias/${province.slug}`;
+  const url = provincePath(province.slug);
   return {
     title: province.name,
     description: province.description.slice(0, 155),
@@ -56,7 +57,7 @@ export default async function ProvincePage({ params }: Props) {
           <ol className="flex w-full flex-wrap items-center justify-start gap-2 text-left text-sm font-bold sm:text-base">
             <li>
               <Link
-                href="/mapa"
+                href="/mapa/argentina"
                 className="rounded-full bg-water/15 px-3 py-1.5 text-water underline-offset-4 transition hover:bg-water/25 hover:underline"
               >
                 Mapa

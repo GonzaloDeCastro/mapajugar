@@ -158,7 +158,7 @@ export function TriviaGame() {
 
       <p className="text-center">
         <Link
-          href="/mapa"
+          href="/mapa/argentina"
           className="text-sm font-bold text-water underline-offset-2 hover:underline"
         >
           Volver al mapa

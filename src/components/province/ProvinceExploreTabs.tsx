@@ -2,8 +2,18 @@
 
 import { useId, useState } from "react";
 
-import type { ProvinceLocalContent } from "@/types/province";
+import type { ProvinceContentItem } from "@/types/province";
+
 import { ProvinceTopicGrid } from "./ProvinceTopicGrid";
+
+type ExploreContent = {
+  slug: string;
+  animals: ProvinceContentItem[];
+  plants: ProvinceContentItem[];
+  foods: ProvinceContentItem[];
+  curiosities: ProvinceContentItem[];
+  tourism: ProvinceContentItem[];
+};
 
 type TabId = "flora" | "fauna" | "foods" | "tourism" | "curiosity";
 
@@ -25,10 +35,19 @@ const TAB_MOBILE_COL_SPAN = [
 ] as const;
 
 type Props = {
-  localContent: ProvinceLocalContent;
+  localContent: ExploreContent;
+  locale?: "es" | "it";
 };
 
-export function ProvinceExploreTabs({ localContent }: Props) {
+const TABS_IT: { id: TabId; label: string; emoji: string }[] = [
+  { id: "flora", label: "Flora", emoji: "🌿" },
+  { id: "fauna", label: "Fauna", emoji: "🦊" },
+  { id: "foods", label: "Cucina", emoji: "🍝" },
+  { id: "tourism", label: "Turismo", emoji: "🧭" },
+  { id: "curiosity", label: "Storia", emoji: "📜" },
+];
+
+export function ProvinceExploreTabs({ localContent, locale = "es" }: Props) {
   const baseId = useId();
   const [active, setActive] = useState<TabId>("flora");
 
@@ -36,10 +55,10 @@ export function ProvinceExploreTabs({ localContent }: Props) {
     <div className="space-y-4 text-left">
       <div
         role="tablist"
-        aria-label="Secciones de la provincia"
+        aria-label={locale === "it" ? "Sezioni della regione" : "Secciones de la provincia"}
         className="grid w-full grid-cols-6 gap-1 sm:grid-cols-5 sm:gap-2"
       >
-        {TABS.map((tab, index) => {
+        {(locale === "it" ? TABS_IT : TABS).map((tab, index) => {
           const selected = active === tab.id;
           return (
             <button
@@ -71,7 +90,7 @@ export function ProvinceExploreTabs({ localContent }: Props) {
         })}
       </div>
 
-      {TABS.map((tab) => {
+      {(locale === "it" ? TABS_IT : TABS).map((tab) => {
         const topicLabel =
           tab.id === "fauna"
             ? "fauna"
@@ -103,7 +122,11 @@ export function ProvinceExploreTabs({ localContent }: Props) {
             hidden={active !== tab.id}
             className="w-full min-w-0 rounded-2xl border-2 border-sun/35 bg-background-warm/80 p-4 text-left shadow-[var(--shadow-card)] sm:p-5"
           >
-            <ProvinceTopicGrid items={items} topicLabel={topicLabel} />
+            <ProvinceTopicGrid
+              items={items}
+              topicLabel={topicLabel}
+              locale={locale}
+            />
           </div>
         );
       })}

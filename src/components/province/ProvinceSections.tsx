@@ -1,11 +1,22 @@
-import type { ProvinceLocalContent } from "@/types/province";
+import type { ProvinceContentItem } from "@/types/province";
 
 import { ProvinceExploreTabs } from "./ProvinceExploreTabs";
 
+type ExploreContent = {
+  slug: string;
+  animals: ProvinceContentItem[];
+  plants: ProvinceContentItem[];
+  foods: ProvinceContentItem[];
+  curiosities: ProvinceContentItem[];
+  tourism: ProvinceContentItem[];
+};
+
 export function ProvinceSections({
   localContent,
+  locale = "es",
 }: {
-  localContent: ProvinceLocalContent;
+  localContent: ExploreContent;
+  locale?: "es" | "it";
 }) {
   const p = (s: string) => `${localContent.slug}-${s}`;
 
@@ -13,9 +24,9 @@ export function ProvinceSections({
     <article className="min-w-0 text-left">
       <section aria-labelledby={p("explore-heading")}>
         <span id={p("explore-heading")} className="sr-only">
-          Explorar contenido
+          {locale === "it" ? "Esplora i contenuti" : "Explorar contenido"}
         </span>
-        <ProvinceExploreTabs localContent={localContent} />
+        <ProvinceExploreTabs localContent={localContent} locale={locale} />
       </section>
     </article>
   );

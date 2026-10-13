@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 
 import { useFullscreen } from "@/hooks/use-fullscreen";
 
@@ -13,11 +13,29 @@ type Props = {
   variant: Variant;
   /** Altura mínima del mapa en la home (clase Tailwind) */
   mapMinHeightClass?: string;
+  map?: ReactNode;
+  showTrivia?: boolean;
+  chooserHref?: string;
+  chooserLabel?: string;
+  largeMapHref?: string;
+  labels?: {
+    largeMap?: string;
+    trivia?: string;
+    fullscreenEnter?: string;
+    fullscreenExit?: string;
+    tip?: string;
+  };
 };
 
 export function MapExplorerFrame({
   variant,
   mapMinHeightClass = "min-h-[min(68vh,540px)] sm:min-h-[min(72vh,620px)]",
+  map,
+  showTrivia = true,
+  chooserHref,
+  chooserLabel,
+  largeMapHref = "/mapa/argentina",
+  labels,
 }: Props) {
   const shellRef = useRef<HTMLDivElement>(null);
   const { active, toggle, supported } = useFullscreen(shellRef);
@@ -26,24 +44,38 @@ export function MapExplorerFrame({
     <div
       className={`flex flex-wrap items-center gap-2 ${variant === "fullPage" ? "justify-between" : ""}`}
     >
-      {variant === "home" ? (
+      {chooserHref && chooserLabel ? (
         <Link
-          href="/mapa"
-          className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98]"
+          href={chooserHref}
+          className={`inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform,box-shadow,border-color] hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] ${
+            variant === "fullPage"
+              ? "border-celeste/60 bg-surface-elevated text-heading hover:border-water"
+              : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60"
+          }`}
         >
-          Mapa grande
+          {chooserLabel}
         </Link>
       ) : null}
-      <Link
-        href="/trivia"
-        className={`inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform,box-shadow,border-color] hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] ${
-          variant === "fullPage"
-            ? "border-celeste/60 bg-surface-elevated text-heading hover:border-water"
-            : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60"
-        }`}
-      >
-        Trivia
-      </Link>
+      {variant === "home" ? (
+        <Link
+          href={largeMapHref}
+          className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98]"
+        >
+          {labels?.largeMap ?? "Mapa grande"}
+        </Link>
+      ) : null}
+      {showTrivia ? (
+        <Link
+          href="/trivia"
+          className={`inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 px-5 text-sm font-extrabold transition-[filter,transform,box-shadow,border-color] hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] ${
+            variant === "fullPage"
+              ? "border-celeste/60 bg-surface-elevated text-heading hover:border-water"
+              : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60"
+          }`}
+        >
+          {labels?.trivia ?? "Trivia"}
+        </Link>
+      ) : null}
       {supported ? (
         <button
           type="button"
@@ -54,12 +86,15 @@ export function MapExplorerFrame({
               : "border-heading/25 bg-surface-elevated text-heading hover:border-celeste/60 hover:brightness-105"
           }`}
         >
-          {active ? "Salir de pantalla completa" : "Pantalla completa"}
+          {active
+            ? (labels?.fullscreenExit ?? "Salir de pantalla completa")
+            : (labels?.fullscreenEnter ?? "Pantalla completa")}
         </button>
       ) : null}
       {variant === "home" && !supported ? (
         <span className="text-xs font-bold text-foreground-muted">
-          Tip: en este dispositivo usá &quot;Mapa grande&quot; para verlo más cómodo.
+          {labels?.tip ??
+            "Tip: en este dispositivo usá \"Mapa grande\" para verlo más cómodo."}
         </span>
       ) : null}
     </div>
@@ -76,7 +111,9 @@ export function MapExplorerFrame({
             ref={shellRef}
             className="mx-auto flex w-full max-w-[1800px] flex-col overflow-x-hidden rounded-2xl border-2 border-celeste/40 bg-surface p-2 sm:h-full sm:min-h-0 sm:flex-1 sm:overflow-hidden sm:rounded-3xl sm:p-3"
           >
-            <InteractiveArgentinaMap className="min-h-0 sm:flex-1 sm:min-h-0" />
+            {map ?? (
+              <InteractiveArgentinaMap className="min-h-0 sm:flex-1 sm:min-h-0" />
+            )}
           </div>
         </div>
       </div>
@@ -90,7 +127,7 @@ export function MapExplorerFrame({
         ref={shellRef}
         className="overflow-hidden rounded-3xl border-2 border-celeste/35 bg-surface p-2 shadow-[var(--shadow-elevated)] sm:p-3"
       >
-        <InteractiveArgentinaMap className={mapMinHeightClass} />
+        {map ?? <InteractiveArgentinaMap className={mapMinHeightClass} />}
       </div>
     </div>
   );
