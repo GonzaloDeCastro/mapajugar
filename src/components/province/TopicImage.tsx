@@ -13,7 +13,11 @@ export function TopicImage({ src, alt, placeholderEmoji, locale = "es" }: Props)
   const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
 
   return (
-    <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-background-warm">
+    <div
+      className={`relative w-full shrink-0 bg-background-warm ${
+        status === "loaded" ? "" : "min-h-48"
+      }`}
+    >
       {status === "loading" && (
         <div
           className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background-warm px-4"
@@ -43,8 +47,8 @@ export function TopicImage({ src, alt, placeholderEmoji, locale = "es" }: Props)
         referrerPolicy="no-referrer"
         onLoad={() => setStatus("loaded")}
         onError={() => setStatus("error")}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-          status === "loaded" ? "opacity-100" : "opacity-0"
+        className={`mx-auto block h-auto max-h-60 w-auto max-w-full object-contain transition-opacity duration-300 sm:max-h-64 ${
+          status === "error" ? "hidden" : status === "loaded" ? "opacity-100" : "opacity-0"
         }`}
       />
     </div>
