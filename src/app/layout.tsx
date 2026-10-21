@@ -27,11 +27,11 @@ const siteUrl = `${siteUrlRaw.replace(/\/$/, "")}/`;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mapa Jugar — Explorá Argentina e Italia",
+    default: "Mapa Jugar — Explorá Argentina, Italia y Sicilia",
     template: "%s | Mapa Jugar",
   },
   description:
-    "Mapas interactivos para explorar Argentina e Italia: regiones, naturaleza, cultura y turismo. Pensado para chicas, chicos y aulas.",
+    "Mapas interactivos para explorar Argentina, Italia y las provincias de Sicilia: naturaleza, cultura y turismo. Pensado para chicas, chicos y aulas.",
   applicationName: "Mapa Jugar",
   alternates: { canonical: "/" },
   openGraph: {
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: "/",
     siteName: "Mapa Jugar",
-    title: "Mapa Jugar — Explorá Argentina e Italia",
+    title: "Mapa Jugar — Explorá Argentina, Italia y Sicilia",
     description:
-      "Descubrí Argentina e Italia jugando con el mapa: flora, fauna, sabores y destinos.",
+      "Descubrí Argentina, Italia y Sicilia jugando con el mapa: flora, fauna, sabores y destinos.",
   },
 };
 

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Elegí un país",
+  title: "Elegí un mapa",
   description:
-    "Elegí Argentina o Italia y explorá el mapa: naturaleza, comidas, lugares e historia.",
+    "Elegí Argentina, Italia o las provincias de Sicilia y explorá naturaleza, comidas, lugares e historia.",
 };
 
 const COUNTRIES = [
@@ -20,6 +20,13 @@ const COUNTRIES = [
     flag: "🇮🇹",
     blurb: "Le venti regioni, in italiano: natura, cucina, luoghi e storia.",
   },
+  {
+    href: "/mapa/sicilia",
+    name: "Sicilia",
+    flag: "🏝️",
+    blurb:
+      "Las nueve provincias, en italiano: animales, comidas, lugares e historia.",
+  },
 ] as const;
 
 export default function CountryPickerPage() {
@@ -30,13 +37,13 @@ export default function CountryPickerPage() {
           Mapa Jugar
         </p>
         <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-          Elegí un país
+          Elegí un mapa
         </h1>
         <p className="mt-3 max-w-xl text-base font-semibold text-white/80 sm:text-lg">
-          Tocá un mapa y explorá sus regiones: naturaleza, comidas, lugares e
-          historia.
+          Tocá un mapa y explorá sus regiones o provincias: naturaleza, comidas,
+          lugares e historia.
         </p>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {COUNTRIES.map((country) => (
             <li key={country.href}>
               <Link

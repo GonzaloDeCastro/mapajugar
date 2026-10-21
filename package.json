@@ -10,7 +10,9 @@
     "generate:tourism-images": "node scripts/write-tourism-images.mjs",
     "generate:italy-paths": "node scripts/extract-italy-map.mjs",
     "generate:italy": "node scripts/build-italy-content.mjs",
-    "build": "node scripts/extract-map-paths.mjs && node scripts/extract-malvinas-path.mjs && node scripts/extract-italy-map.mjs && node scripts/generate-trivia-questions.mjs && next build --turbopack",
+    "generate:sicily-paths": "node scripts/extract-sicily-map.mjs",
+    "generate:sicily": "node scripts/build-sicily-content.mjs",
+    "build": "node scripts/extract-map-paths.mjs && node scripts/extract-malvinas-path.mjs && node scripts/extract-italy-map.mjs && node scripts/extract-sicily-map.mjs && node scripts/generate-trivia-questions.mjs && next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },

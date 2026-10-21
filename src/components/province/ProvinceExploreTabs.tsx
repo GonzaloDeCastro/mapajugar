@@ -55,7 +55,7 @@ export function ProvinceExploreTabs({ localContent, locale = "es" }: Props) {
     <div className="space-y-4 text-left">
       <div
         role="tablist"
-        aria-label={locale === "it" ? "Sezioni della regione" : "Secciones de la provincia"}
+        aria-label={locale === "it" ? "Sezioni" : "Secciones de la provincia"}
         className="grid w-full grid-cols-6 gap-1 sm:grid-cols-5 sm:gap-2"
       >
         {(locale === "it" ? TABS_IT : TABS).map((tab, index) => {

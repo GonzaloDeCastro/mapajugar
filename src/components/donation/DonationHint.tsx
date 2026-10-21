@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
 type Props = {
@@ -7,7 +8,40 @@ type Props = {
   qrPath: string;
 };
 
+const COPY = {
+  es: {
+    button: "Apoyar",
+    buttonLabel: "Apoyar el proyecto",
+    message:
+      "Si te sirve Mapa Jugar, podés apoyar el proyecto con una donación voluntaria.",
+    close: "Cerrar",
+    qrAlt: "Código QR para donar",
+    qrHintPaypal: "Escaneá el QR o usá PayPal:",
+    qrHint: "Escaneá el QR para donar:",
+    paypal: "Donar con PayPal",
+  },
+  it: {
+    button: "Sostieni",
+    buttonLabel: "Sostieni il progetto",
+    message:
+      "Se Mapa Jugar ti è utile, puoi sostenere il progetto con una donazione volontaria.",
+    close: "Chiudi",
+    qrAlt: "Codice QR per donare",
+    qrHintPaypal: "Scansiona il QR o usa PayPal:",
+    qrHint: "Scansiona il QR per donare:",
+    paypal: "Dona con PayPal",
+  },
+} as const;
+
+function donationLocale(pathname: string): keyof typeof COPY {
+  const path = pathname.replace(/\/$/, "") || "/";
+  if (path === "/mapa/italia" || path.startsWith("/mapa/italia/")) return "it";
+  if (path === "/mapa/sicilia" || path.startsWith("/mapa/sicilia/")) return "it";
+  return "es";
+}
+
 export function DonationHint({ paypalUrl, qrPath }: Props) {
+  const copy = COPY[donationLocale(usePathname() ?? "")];
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
@@ -50,13 +84,12 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
               id={`${panelId}-title`}
               className="text-sm font-semibold leading-snug text-white/95"
             >
-              Si te sirve Mapa Jugar, podés apoyar el proyecto con una donación
-              voluntaria.
+              {copy.message}
             </p>
             <button
               type="button"
               className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white/10 text-lg leading-none transition-[background-color,filter,transform] hover:bg-white/25 hover:brightness-110 active:scale-95"
-              aria-label="Cerrar"
+              aria-label={copy.close}
               onClick={() => setOpen(false)}
             >
               ×
@@ -68,7 +101,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={qrPath}
-                alt="Código QR para donar"
+                alt={copy.qrAlt}
                 width={112}
                 height={112}
                 className="h-28 w-28 object-contain"
@@ -76,9 +109,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
             </div>
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <p className="text-xs font-bold text-white/75">
-                {paypalUrl
-                  ? "Escaneá el QR o usá PayPal:"
-                  : "Escaneá el QR para donar:"}
+                {paypalUrl ? copy.qrHintPaypal : copy.qrHint}
               </p>
               {paypalUrl ? (
                 <a
@@ -87,7 +118,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
                   rel="noopener noreferrer"
                   className="inline-flex min-h-10 cursor-pointer items-center justify-center rounded-full bg-sun px-4 text-center text-sm font-extrabold text-sun-ink shadow-[var(--shadow-card)] transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98]"
                 >
-                  Donar con PayPal
+                  {copy.paypal}
                 </a>
               ) : null}
             </div>
@@ -99,7 +130,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
         type="button"
         aria-expanded={open}
         aria-controls={open ? panelId : undefined}
-        aria-label="Apoyar el proyecto"
+        aria-label={copy.buttonLabel}
         className="pointer-events-auto inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-full border border-white/25 bg-sky-deep/80 px-3 text-xs font-bold text-white shadow-[var(--shadow-card)] backdrop-blur-md transition-[filter,transform,background-color,box-shadow,border-color] hover:border-sun/60 hover:bg-sky-deep hover:brightness-110 hover:shadow-[var(--shadow-elevated)] active:scale-[0.98] sm:h-11 sm:gap-2 sm:px-4 sm:text-sm"
         onClick={() => setOpen((value) => !value)}
       >
@@ -113,7 +144,7 @@ export function DonationHint({ paypalUrl, qrPath }: Props) {
         >
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
         </svg>
-        <span className="hidden sm:inline">Apoyar</span>
+        <span className="hidden sm:inline">{copy.button}</span>
       </button>
     </div>
   );

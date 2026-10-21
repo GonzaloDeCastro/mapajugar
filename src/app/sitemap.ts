@@ -2,7 +2,12 @@ import type { MetadataRoute } from "next";
 
 import { listItalyRegions } from "@/data/italy/regions";
 import { getAllProvinceSlugs } from "@/data/provinces";
-import { italyRegionPath, provincePath } from "@/lib/routing/paths";
+import { listSicilyProvinces } from "@/data/sicily/provinces";
+import {
+  italyRegionPath,
+  provincePath,
+  sicilyProvincePath,
+} from "@/lib/routing/paths";
 
 export const dynamic = "force-static";
 
@@ -34,6 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const sicilyProvinces = listSicilyProvinces().map((province) => ({
+    url: `${base}${sicilyProvincePath(province.slug)}/`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     {
@@ -55,6 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${base}/mapa/sicilia/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${base}/trivia/`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -62,5 +80,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...provinces,
     ...regions,
+    ...sicilyProvinces,
   ];
 }

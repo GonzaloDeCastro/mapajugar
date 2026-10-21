@@ -67,6 +67,16 @@ export default async function ItalyRegionPage({ params }: Props) {
             <li className="font-display text-heading">{region.name}</li>
           </ol>
         </nav>
+        {region.slug === "sicilia" ? (
+          <p className="mb-6">
+            <Link
+              href="/mapa/sicilia"
+              className="inline-flex min-h-12 items-center rounded-full bg-water px-5 text-sm font-extrabold text-white shadow-[var(--shadow-card)] transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
+            >
+              Esplora le nove province
+            </Link>
+          </p>
+        ) : null}
         <div className="flex min-w-0 flex-col-reverse gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,40%)] lg:items-start">
           <ProvinceSections
             locale="it"
